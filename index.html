@@ -1,0 +1,2911 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ひだまりの まなびば｜とくべつしえん がくしゅうルーム</title>
+  <meta name="description" content="特別支援学級の子どもたちが、自分のペースで安心して学べる学習アプリ集です。ひらがな中心・読み上げつき・刺激をおさえたデザインで、スケジュールやタイマー、気持ちを伝えるカードもそろえています。登録不要・個人情報不要。">
+  <meta name="theme-color" content="#fbf6ec">
+
+  <!-- フォント（読み込めない環境でも、端末のフォントでそのまま表示されます） -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=BIZ+UDPGothic:wght@400;700&display=swap" media="print" onload="this.media='all'">
+
+  <style>
+    /* =========================================================
+       いろ（テーマ）
+       ・やさしい色を基本に、まぶしさ・強い点滅をおさえています
+       ・せっていで「もり」「うみ」「よる」「くっきり」に変えられます
+    ========================================================= */
+    :root {
+      --bg: #fbf6ec;
+      --bg-2: #f4ecdc;
+      --card: #ffffff;
+      --ink: #3d3a33;
+      --ink-2: #6f695c;
+      --line: #eadfca;
+      --accent: #ec9a3c;
+      --accent-ink: #ffffff;
+      --good: #4caf86;
+      --soft: #fff3df;
+      --focus: #2f7de1;
+      --shadow: 0 6px 0 rgba(120, 95, 50, .10), 0 10px 24px rgba(120, 95, 50, .08);
+      --radius: 22px;
+      --fs: 1;
+      --font: 'Zen Maru Gothic', 'Hiragino Maru Gothic ProN', 'BIZ UDPGothic', 'Meiryo', system-ui, sans-serif;
+    }
+
+    body.theme-mori {
+      --bg: #f0f6ee;
+      --bg-2: #e2eedd;
+      --line: #d3e4cc;
+      --accent: #4f9d69;
+      --soft: #e6f3e2;
+      --ink: #2f3b32;
+      --ink-2: #5c6b5f;
+    }
+
+    body.theme-umi {
+      --bg: #eef5fa;
+      --bg-2: #dfeaf3;
+      --line: #cfe0ec;
+      --accent: #3f8fc4;
+      --soft: #e3f0f9;
+      --ink: #2c3945;
+      --ink-2: #5b6b78;
+    }
+
+    body.theme-yoru {
+      --bg: #22262f;
+      --bg-2: #2b303b;
+      --card: #303644;
+      --ink: #efe9dc;
+      --ink-2: #b9b3a6;
+      --line: #434b5c;
+      --accent: #e8b65a;
+      --accent-ink: #2a2a2a;
+      --soft: #3a4150;
+      --focus: #8ec5ff;
+      --shadow: 0 4px 0 rgba(0, 0, 0, .25);
+    }
+
+    body.theme-kukkiri {
+      --bg: #ffffff;
+      --bg-2: #ffffff;
+      --card: #ffffff;
+      --ink: #000000;
+      --ink-2: #1a1a1a;
+      --line: #000000;
+      --accent: #0040a8;
+      --accent-ink: #ffffff;
+      --good: #006b3c;
+      --soft: #fff6b0;
+      --focus: #d40000;
+      --shadow: none;
+    }
+
+    body.theme-kukkiri .app,
+    body.theme-kukkiri .panel,
+    body.theme-kukkiri .step,
+    body.theme-kukkiri .feel {
+      border-width: 3px !important;
+    }
+
+    body.ud {
+      --font: 'BIZ UDPGothic', 'BIZ UDゴシック', 'Meiryo', system-ui, sans-serif;
+    }
+
+    /* =========================================================
+       きほん
+    ========================================================= */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: calc(100% * var(--fs));
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.75;
+      letter-spacing: .04em;
+      font-weight: 500;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+      color: inherit;
+      letter-spacing: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    :focus-visible {
+      outline: 4px solid var(--focus);
+      outline-offset: 3px;
+      border-radius: 12px;
+    }
+
+    .wrap {
+      width: min(1120px, 100% - 32px);
+      margin-inline: auto;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
+    }
+
+    .skip {
+      position: absolute;
+      left: 12px;
+      top: -60px;
+      background: var(--ink);
+      color: var(--bg);
+      padding: 8px 14px;
+      border-radius: 10px;
+      z-index: 99;
+    }
+
+    .skip:focus {
+      top: 12px;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    /* ボタン */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5em;
+      min-height: 52px;
+      padding: .5em 1.3em;
+      border-radius: 999px;
+      border: 0;
+      background: var(--accent);
+      color: var(--accent-ink);
+      font-weight: 900;
+      font-size: 1.05rem;
+      text-decoration: none;
+      box-shadow: 0 4px 0 rgba(0, 0, 0, .14);
+      transition: transform .12s, box-shadow .12s;
+    }
+
+    .btn:active {
+      transform: translateY(3px);
+      box-shadow: 0 1px 0 rgba(0, 0, 0, .14);
+    }
+
+    .btn-sub {
+      background: var(--card);
+      color: var(--ink);
+      border: 2px solid var(--line);
+      box-shadow: 0 4px 0 var(--line);
+    }
+
+    .btn-good {
+      background: var(--good);
+      color: #fff;
+    }
+
+    .btn-sm {
+      min-height: 42px;
+      font-size: .92rem;
+      padding: .3em 1em;
+    }
+
+    .icon-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .35em;
+      min-width: 52px;
+      height: 52px;
+      padding: 0 .8em;
+      border-radius: 16px;
+      border: 2px solid var(--line);
+      background: var(--card);
+      font-weight: 900;
+      font-size: .95rem;
+    }
+
+    .icon-btn .em {
+      font-size: 1.35rem;
+      line-height: 1;
+    }
+
+    .icon-btn[aria-pressed="false"] {
+      opacity: .6;
+    }
+
+    .panel {
+      background: var(--card);
+      border: 2px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    /* =========================================================
+       ヘッダー
+    ========================================================= */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: color-mix(in srgb, var(--bg) 92%, transparent);
+      backdrop-filter: blur(6px);
+      border-bottom: 2px solid var(--line);
+    }
+
+    .site-header .wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-height: 76px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      margin-right: auto;
+      min-width: 0;
+    }
+
+    .brand svg {
+      width: 48px;
+      height: 48px;
+      flex: none;
+    }
+
+    .brand-name {
+      display: block;
+      font-weight: 900;
+      font-size: 1.25rem;
+      line-height: 1.2;
+      white-space: nowrap;
+    }
+
+    .brand-sub {
+      display: block;
+      font-size: .78rem;
+      color: var(--ink-2);
+      font-weight: 700;
+    }
+
+    .today-chip {
+      font-weight: 900;
+      background: var(--soft);
+      border: 2px solid var(--line);
+      border-radius: 999px;
+      padding: .35em 1em;
+      white-space: nowrap;
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    @media (max-width: 760px) {
+      .today-chip {
+        display: none;
+      }
+
+      .brand-sub {
+        display: none;
+      }
+
+      .icon-btn .lbl {
+        display: none;
+      }
+    }
+
+    /* =========================================================
+       あいさつ ＆ きもち
+    ========================================================= */
+    .hero {
+      padding: 28px 0 8px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.25fr;
+      gap: 20px;
+    }
+
+    @media (max-width: 860px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .greet {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 22px;
+      background: linear-gradient(160deg, var(--soft), var(--card) 70%);
+    }
+
+    .mascot {
+      width: 128px;
+      height: 128px;
+      flex: none;
+      border: 0;
+      background: none;
+      border-radius: 50%;
+    }
+
+    .mascot svg {
+      width: 100%;
+      height: 100%;
+      animation: bob 3.2s ease-in-out infinite;
+    }
+
+    @keyframes bob {
+
+      0%,
+      100% {
+        transform: translateY(0)
+      }
+
+      50% {
+        transform: translateY(-5px)
+      }
+    }
+
+    .bubble {
+      position: relative;
+      background: var(--card);
+      border: 2px solid var(--line);
+      border-radius: 20px;
+      padding: 14px 18px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    .bubble::before {
+      content: "";
+      position: absolute;
+      left: -11px;
+      top: 50%;
+      width: 18px;
+      height: 18px;
+      background: var(--card);
+      border-left: 2px solid var(--line);
+      border-bottom: 2px solid var(--line);
+      transform: translateY(-50%) rotate(45deg);
+    }
+
+    .bubble b {
+      display: block;
+      font-size: 1.5rem;
+      font-weight: 900;
+    }
+
+    .kimochi {
+      padding: 20px 22px;
+    }
+
+    .h3 {
+      display: flex;
+      align-items: center;
+      gap: .4em;
+      font-size: 1.25rem;
+      font-weight: 900;
+      margin-bottom: 12px;
+    }
+
+    .feels {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 8px;
+    }
+
+    @media (max-width: 560px) {
+      .feels {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .feel {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      padding: 10px 4px 8px;
+      border-radius: 18px;
+      border: 2px solid var(--line);
+      background: var(--card);
+      font-weight: 900;
+      font-size: .95rem;
+      transition: transform .15s, background .15s;
+    }
+
+    .feel .em {
+      font-size: 2.4rem;
+      line-height: 1.1;
+    }
+
+    .feel[aria-pressed="true"] {
+      background: var(--soft);
+      border-color: var(--accent);
+      transform: scale(1.05);
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 30%, transparent);
+    }
+
+    .feel-msg {
+      margin-top: 12px;
+      padding: 12px 16px;
+      border-radius: 16px;
+      background: var(--soft);
+      font-weight: 700;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .feel-msg p {
+      flex: 1 1 240px;
+    }
+
+    /* =========================================================
+       セクション共通
+    ========================================================= */
+    .section {
+      padding: 30px 0 8px;
+    }
+
+    .sec-head {
+      display: flex;
+      align-items: flex-end;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+
+    .sec-title {
+      display: flex;
+      align-items: center;
+      gap: .45em;
+      font-size: 1.6rem;
+      font-weight: 900;
+      line-height: 1.3;
+    }
+
+    .sec-title .em {
+      display: grid;
+      place-items: center;
+      width: 52px;
+      height: 52px;
+      border-radius: 16px;
+      background: var(--soft);
+      border: 2px solid var(--line);
+      font-size: 1.7rem;
+    }
+
+    .sec-lead {
+      color: var(--ink-2);
+      font-weight: 700;
+    }
+
+    /* =========================================================
+       きょうの よてい（みえる スケジュール）
+    ========================================================= */
+    .sched-bar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-left: auto;
+      font-weight: 900;
+    }
+
+    .progress {
+      width: 160px;
+      height: 14px;
+      border-radius: 99px;
+      background: var(--bg-2);
+      overflow: hidden;
+      border: 2px solid var(--line);
+    }
+
+    .progress i {
+      display: block;
+      height: 100%;
+      background: var(--good);
+      border-radius: 99px;
+      transition: width .4s;
+    }
+
+    .steps {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      padding: 18px 4px 16px;
+      scroll-snap-type: x proximity;
+    }
+
+    .step {
+      position: relative;
+      flex: 0 0 132px;
+      scroll-snap-align: start;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      padding: 14px 8px 12px;
+      border-radius: 20px;
+      border: 2px solid var(--line);
+      background: var(--card);
+      box-shadow: var(--shadow);
+      font-weight: 900;
+      text-align: center;
+    }
+
+    .step .em {
+      font-size: 2.6rem;
+      line-height: 1.15;
+    }
+
+    .step .t {
+      font-size: .82rem;
+      color: var(--ink-2);
+      font-weight: 700;
+    }
+
+    .step .l {
+      font-size: 1rem;
+      line-height: 1.35;
+    }
+
+    .step .tag {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 0 .8em;
+      border-radius: 99px;
+      font-size: .8rem;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .step.now {
+      border-color: var(--accent);
+      border-width: 3px;
+      background: var(--soft);
+    }
+
+    .step.now .tag {
+      background: var(--accent);
+      color: var(--accent-ink);
+    }
+
+    .step.next .tag {
+      background: var(--card);
+      border: 2px solid var(--line);
+    }
+
+    .step.done {
+      opacity: .55;
+    }
+
+    .step.done::after {
+      content: "✓";
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      font-size: 4rem;
+      font-weight: 900;
+      color: var(--good);
+      text-shadow: 0 2px 0 #fff;
+    }
+
+    .sched-all {
+      text-align: center;
+      font-weight: 900;
+      font-size: 1.15rem;
+      padding: 10px;
+      border-radius: 16px;
+      background: var(--soft);
+    }
+
+    /* =========================================================
+       アプリを えらぼう
+    ========================================================= */
+    .tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+
+    .tab {
+      display: inline-flex;
+      align-items: center;
+      gap: .4em;
+      min-height: 52px;
+      padding: .3em 1.1em .3em .8em;
+      border-radius: 999px;
+      border: 2px solid var(--line);
+      background: var(--card);
+      font-weight: 900;
+      font-size: 1rem;
+    }
+
+    .tab .em {
+      font-size: 1.4rem;
+    }
+
+    .tab .n {
+      min-width: 1.6em;
+      padding: 0 .4em;
+      border-radius: 99px;
+      background: var(--bg-2);
+      font-size: .8rem;
+      text-align: center;
+    }
+
+    .tab[aria-selected="true"] {
+      background: var(--c, var(--accent));
+      border-color: var(--c, var(--accent));
+      color: #fff;
+    }
+
+    .tab[aria-selected="true"] .n {
+      background: rgba(255, 255, 255, .3);
+    }
+
+    body.theme-kukkiri .tab[aria-selected="true"] {
+      background: #000;
+      border-color: #000;
+    }
+
+    .shelf {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+      font-weight: 900;
+    }
+
+    .shelf-label {
+      color: var(--ink-2);
+      font-size: .9rem;
+      margin-right: 4px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: .35em;
+      min-height: 44px;
+      padding: .2em 1em .2em .6em;
+      border-radius: 999px;
+      border: 2px solid var(--line);
+      background: var(--card);
+      text-decoration: none;
+      font-size: .95rem;
+    }
+
+    .pill .em {
+      font-size: 1.3rem;
+    }
+
+    .apps {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 18px;
+    }
+
+    .app {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      border-radius: var(--radius);
+      border: 2px solid var(--line);
+      background: var(--card);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transition: transform .15s;
+    }
+
+    .app::before {
+      content: "";
+      height: 10px;
+      background: var(--c);
+    }
+
+    .app:hover {
+      transform: translateY(-3px);
+    }
+
+    .app-link {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 6px;
+      padding: 20px 18px 10px;
+      text-decoration: none;
+      flex: 1;
+    }
+
+    .app-emoji {
+      display: grid;
+      place-items: center;
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      font-size: 3.4rem;
+      background: var(--soft);
+      background: color-mix(in srgb, var(--c) 18%, var(--card));
+      border: 3px solid color-mix(in srgb, var(--c) 45%, var(--card));
+    }
+
+    .app-title {
+      font-size: 1.3rem;
+      font-weight: 900;
+      line-height: 1.4;
+    }
+
+    .app-desc {
+      color: var(--ink-2);
+      font-weight: 700;
+      font-size: .95rem;
+      line-height: 1.6;
+    }
+
+    .app-cat {
+      font-size: .78rem;
+      font-weight: 900;
+      color: var(--ink-2);
+      background: var(--bg-2);
+      border-radius: 99px;
+      padding: 0 .8em;
+    }
+
+    .app-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      padding: 0 14px 14px;
+    }
+
+    .app-actions button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .3em;
+      min-height: 46px;
+      border-radius: 14px;
+      border: 2px solid var(--line);
+      background: var(--card);
+      font-weight: 900;
+      font-size: .9rem;
+    }
+
+    .app-actions .fav[aria-pressed="true"] {
+      background: #fff4c7;
+      border-color: #e9c44a;
+      color: #6b5200;
+    }
+
+    .badge {
+      position: absolute;
+      top: 20px;
+      right: 12px;
+      font-size: .78rem;
+      font-weight: 900;
+      padding: .1em .8em;
+      border-radius: 99px;
+      background: #ff8a7a;
+      color: #fff;
+    }
+
+    .badge.soon {
+      background: var(--ink-2);
+    }
+
+    .app.is-soon .app-link {
+      cursor: default;
+      opacity: .6;
+    }
+
+    .empty {
+      text-align: center;
+      padding: 34px 20px;
+      font-weight: 900;
+      font-size: 1.1rem;
+      color: var(--ink-2);
+      border: 3px dashed var(--line);
+      border-radius: var(--radius);
+    }
+
+    .empty .em {
+      display: block;
+      font-size: 3rem;
+    }
+
+    /* =========================================================
+       どうぐばこ
+    ========================================================= */
+    .tools {
+      padding: 18px;
+    }
+
+    .tool-tabs {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    @media (max-width: 700px) {
+      .tool-tabs {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .tool-tab {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      padding: 10px 4px;
+      border-radius: 18px;
+      border: 2px solid var(--line);
+      background: var(--card);
+      font-weight: 900;
+      font-size: .9rem;
+      line-height: 1.35;
+    }
+
+    .tool-tab .em {
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+
+    .tool-tab[aria-selected="true"] {
+      background: var(--soft);
+      border-color: var(--accent);
+      border-width: 3px;
+    }
+
+    .tool {
+      min-height: 380px;
+    }
+
+    .tool-center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      text-align: center;
+    }
+
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+    }
+
+    .seg {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      justify-content: center;
+    }
+
+    .seg button {
+      min-width: 64px;
+      min-height: 48px;
+      padding: 0 .9em;
+      border-radius: 14px;
+      border: 2px solid var(--line);
+      background: var(--card);
+      font-weight: 900;
+    }
+
+    .seg button[aria-pressed="true"] {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: var(--accent-ink);
+    }
+
+    .note {
+      color: var(--ink-2);
+      font-size: .9rem;
+      font-weight: 700;
+    }
+
+    /* みえるタイマー */
+    .vt-face {
+      position: relative;
+      width: min(300px, 76vw);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: var(--card);
+      border: 6px solid var(--line);
+      box-shadow: inset 0 0 0 8px var(--bg-2);
+      padding: 14px;
+    }
+
+    .vt-disc {
+      --p: 1;
+      --vt: #ef7b6b;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: conic-gradient(var(--vt) calc(var(--p) * 360deg), transparent 0);
+    }
+
+    .vt-face::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 4px;
+      width: 4px;
+      height: 18px;
+      margin-left: -2px;
+      border-radius: 2px;
+      background: var(--ink-2);
+    }
+
+    .vt-center {
+      position: absolute;
+      inset: 50% auto auto 50%;
+      transform: translate(-50%, -50%);
+      min-width: 132px;
+      padding: 6px 16px;
+      border-radius: 20px;
+      background: var(--card);
+      border: 3px solid var(--line);
+      font-size: 2.4rem;
+      font-weight: 900;
+      font-variant-numeric: tabular-nums;
+      line-height: 1.3;
+    }
+
+    .vt-center small {
+      display: block;
+      font-size: .9rem;
+      color: var(--ink-2);
+    }
+
+    .color-dot {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 3px solid var(--card);
+      box-shadow: 0 0 0 2px var(--line);
+    }
+
+    .color-dot[aria-pressed="true"] {
+      box-shadow: 0 0 0 4px var(--ink);
+    }
+
+    /* しんこきゅう */
+    .br-stage {
+      position: relative;
+      width: 280px;
+      height: 280px;
+      display: grid;
+      place-items: center;
+    }
+
+    .br-ring {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      border: 3px dashed var(--line);
+    }
+
+    .br-ball {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 30%, #fff, #9fd3f0 60%, #6bb3df);
+      transform: scale(1);
+      transition: transform 4s ease-in-out;
+      box-shadow: 0 10px 30px rgba(80, 150, 200, .3);
+    }
+
+    .br-ball.big {
+      transform: scale(1.95);
+    }
+
+    .br-text {
+      position: absolute;
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: #24506d;
+    }
+
+    body.theme-yoru .br-text {
+      color: #14324a;
+    }
+
+    /* まず→つぎ */
+    .ft {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 14px;
+      width: 100%;
+      max-width: 720px;
+    }
+
+    .ft-arrow {
+      font-size: 2.6rem;
+      font-weight: 900;
+      color: var(--ink-2);
+    }
+
+    .ft-slot {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      min-height: 230px;
+      padding: 44px 10px 16px;
+      border-radius: 26px;
+      border: 3px dashed var(--line);
+      background: var(--card);
+      font-weight: 900;
+      font-size: 1.3rem;
+    }
+
+    .ft-slot.filled {
+      border-style: solid;
+    }
+
+    .ft-slot .em {
+      font-size: 4.4rem;
+      line-height: 1.1;
+    }
+
+    .ft-slot .cap {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 0 1em;
+      border-radius: 99px;
+      background: var(--bg-2);
+      font-size: 1rem;
+    }
+
+    .ft-slot.active {
+      border-color: var(--accent);
+      background: var(--soft);
+    }
+
+    .ft-slot.done {
+      opacity: .55;
+    }
+
+    .ft-slot.done::after {
+      content: "✓";
+      position: absolute;
+      font-size: 6rem;
+      color: var(--good);
+    }
+
+    @media (max-width: 560px) {
+      .ft {
+        grid-template-columns: 1fr;
+      }
+
+      .ft-arrow {
+        transform: rotate(90deg);
+        text-align: center;
+      }
+    }
+
+    /* つたえる カード */
+    .tell-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 12px;
+    }
+
+    .tell {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      padding: 16px 10px;
+      border-radius: 20px;
+      border: 2px solid var(--line);
+      background: var(--card);
+      font-weight: 900;
+      font-size: 1.05rem;
+      line-height: 1.45;
+    }
+
+    .tell .em {
+      font-size: 2.8rem;
+    }
+
+    .bigcard {
+      position: fixed;
+      inset: 0;
+      z-index: 80;
+      background: var(--bg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      padding: 24px;
+      text-align: center;
+    }
+
+    .bigcard .em {
+      font-size: min(34vw, 13rem);
+      line-height: 1;
+    }
+
+    .bigcard p {
+      font-size: clamp(2rem, 6vw, 3.6rem);
+      font-weight: 900;
+      line-height: 1.4;
+      max-width: 16em;
+    }
+
+    /* シールちょう */
+    .stk-head {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+      font-weight: 900;
+    }
+
+    .stk-book {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+      padding: 16px;
+      border-radius: 20px;
+      background: repeating-linear-gradient(0deg, var(--soft) 0 2px, transparent 2px 34px), var(--card);
+      border: 2px solid var(--line);
+      max-width: 560px;
+      margin-inline: auto;
+    }
+
+    .stk {
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      border: 2px dashed var(--line);
+      font-size: clamp(1.6rem, 6vw, 2.6rem);
+      background: var(--card);
+    }
+
+    .stk.on {
+      border: 3px solid #f6d36b;
+      background: #fffbea;
+    }
+
+    /* シール ゲット！ */
+    .stk-pop {
+      position: fixed;
+      inset: 0;
+      z-index: 90;
+      display: grid;
+      place-items: center;
+      pointer-events: none;
+    }
+
+    .stk-pop div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 24px 40px;
+      border-radius: 32px;
+      background: var(--card);
+      border: 4px solid #f6d36b;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, .18);
+      font-weight: 900;
+      font-size: 1.4rem;
+      animation: pop .5s cubic-bezier(.3, 1.6, .6, 1);
+    }
+
+    .stk-pop .em {
+      font-size: 5rem;
+      line-height: 1.1;
+    }
+
+    @keyframes pop {
+      from {
+        transform: scale(.4);
+        opacity: 0
+      }
+
+      to {
+        transform: scale(1);
+        opacity: 1
+      }
+    }
+
+    /* =========================================================
+       おうちのかた・せんせいへ
+    ========================================================= */
+    .adults {
+      padding: 26px;
+      font-family: var(--font);
+      letter-spacing: .02em;
+    }
+
+    .adults h2 {
+      font-size: 1.35rem;
+      font-weight: 900;
+      margin-bottom: 8px;
+    }
+
+    .adults>p {
+      color: var(--ink-2);
+      margin-bottom: 16px;
+    }
+
+    .principles {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+      gap: 12px;
+    }
+
+    .principle {
+      padding: 16px;
+      border-radius: 18px;
+      background: var(--bg);
+      border: 2px solid var(--line);
+    }
+
+    .principle h3 {
+      font-size: 1.02rem;
+      font-weight: 900;
+      margin-bottom: 4px;
+      display: flex;
+      gap: .4em;
+      align-items: center;
+    }
+
+    .principle p {
+      font-size: .9rem;
+      color: var(--ink-2);
+      line-height: 1.7;
+    }
+
+    /* フッター */
+    .footer {
+      margin-top: 40px;
+      padding: 26px 0 40px;
+      border-top: 2px solid var(--line);
+      background: var(--bg-2);
+      font-size: .9rem;
+      color: var(--ink-2);
+      font-weight: 700;
+    }
+
+    .footer .wrap {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+      justify-content: space-between;
+    }
+
+    /* ながおしボタン（先生用） */
+    .hold {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hold::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 5px;
+      width: 0;
+      background: var(--accent);
+    }
+
+    .hold.pressing::after {
+      width: 100%;
+      transition: width 1.5s linear;
+    }
+
+    /* =========================================================
+       モーダル
+    ========================================================= */
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 70;
+      display: grid;
+      place-items: center;
+      padding: 16px;
+      background: rgba(40, 34, 24, .45);
+    }
+
+    .modal-box {
+      position: relative;
+      width: min(680px, 100%);
+      max-height: calc(100dvh - 32px);
+      overflow: auto;
+      padding: 24px;
+      border-radius: 26px;
+      background: var(--card);
+      border: 2px solid var(--line);
+    }
+
+    .modal-box.wide {
+      width: min(900px, 100%);
+    }
+
+    .modal-box h2 {
+      font-size: 1.4rem;
+      font-weight: 900;
+      margin-bottom: 14px;
+      padding-right: 60px;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+    }
+
+    .set-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 14px 0;
+      border-bottom: 2px dashed var(--line);
+    }
+
+    .set-row>span {
+      font-weight: 900;
+    }
+
+    .set-row small {
+      display: block;
+      color: var(--ink-2);
+      font-weight: 700;
+      font-size: .8rem;
+    }
+
+    .themes {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .theme-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      min-width: 70px;
+      padding: 6px;
+      border-radius: 14px;
+      border: 2px solid var(--line);
+      background: var(--card);
+      font-weight: 900;
+      font-size: .8rem;
+    }
+
+    .theme-btn i {
+      width: 40px;
+      height: 26px;
+      border-radius: 8px;
+      border: 1px solid rgba(0, 0, 0, .15);
+    }
+
+    .theme-btn[aria-pressed="true"] {
+      border-color: var(--accent);
+      border-width: 3px;
+    }
+
+    .picker {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+      gap: 10px;
+    }
+
+    .picker button {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 10px 4px;
+      border-radius: 18px;
+      border: 2px solid var(--line);
+      background: var(--card);
+      font-weight: 900;
+      font-size: .95rem;
+    }
+
+    .picker .em {
+      font-size: 2.4rem;
+    }
+
+    /* 先生用パネル */
+    .t-tabs {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+
+    .t-tabs button {
+      min-height: 44px;
+      padding: 0 1em;
+      border-radius: 12px;
+      border: 2px solid var(--line);
+      background: var(--card);
+      font-weight: 900;
+    }
+
+    .t-tabs button[aria-selected="true"] {
+      background: var(--ink);
+      color: var(--bg);
+      border-color: var(--ink);
+    }
+
+    .t-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .95rem;
+    }
+
+    .t-table th,
+    .t-table td {
+      border-bottom: 1px solid var(--line);
+      padding: 8px 6px;
+      text-align: left;
+      vertical-align: middle;
+    }
+
+    .t-table th {
+      font-size: .8rem;
+      color: var(--ink-2);
+    }
+
+    .input {
+      width: 100%;
+      min-height: 44px;
+      padding: 6px 10px;
+      border-radius: 10px;
+      border: 2px solid var(--line);
+      background: var(--card);
+      font-weight: 700;
+    }
+
+    .input.em-in {
+      width: 64px;
+      text-align: center;
+      font-size: 1.4rem;
+    }
+
+    .input.time-in {
+      width: 92px;
+    }
+
+    .mini {
+      min-width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      border: 2px solid var(--line);
+      background: var(--card);
+      font-weight: 900;
+    }
+
+    .check {
+      width: 26px;
+      height: 26px;
+      accent-color: var(--accent);
+    }
+
+    .t-help {
+      background: var(--soft);
+      border-radius: 14px;
+      padding: 12px 14px;
+      font-size: .9rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    /* トースト */
+    #toasts {
+      position: fixed;
+      left: 50%;
+      bottom: 20px;
+      transform: translateX(-50%);
+      z-index: 95;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      align-items: center;
+      pointer-events: none;
+    }
+
+    .toast {
+      padding: 12px 22px;
+      border-radius: 99px;
+      background: var(--ink);
+      color: var(--bg);
+      font-weight: 900;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, .2);
+    }
+
+    /* わかちがき（ことばの まとまりで 改行する） */
+    .bubble,
+    .feel-msg p,
+    .sec-lead,
+    .step .l,
+    .app-title,
+    .app-desc,
+    .tell,
+    .bigcard p,
+    .note,
+    .ft-slot .l,
+    .empty {
+      word-break: keep-all;
+      overflow-wrap: anywhere;
+    }
+
+    /* スマホ */
+    @media (max-width: 520px) {
+      .brand svg {
+        width: 38px;
+        height: 38px;
+      }
+
+      .brand-name {
+        font-size: 1.05rem;
+      }
+
+      .site-header .wrap {
+        gap: 8px;
+      }
+
+      .greet {
+        padding: 16px;
+        gap: 10px;
+      }
+
+      .mascot {
+        width: 84px;
+        height: 84px;
+      }
+
+      .bubble b {
+        font-size: 1.25rem;
+      }
+
+      .sec-title {
+        font-size: 1.35rem;
+      }
+    }
+
+    /* しずかモード（うごきを へらす） */
+    body.quiet *,
+    body.quiet *::before,
+    body.quiet *::after {
+      animation: none !important;
+      transition-duration: 0s !important;
+    }
+
+    body.quiet .br-ball {
+      transition-duration: 4s !important;
+    }
+
+    body.quiet .app:hover {
+      transform: none;
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip" href="#apps">アプリの いちらんへ</a>
+
+  <!-- =====================================================
+       ヘッダー
+  ===================================================== -->
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="./" aria-label="トップへ">
+        <svg viewBox="0 0 48 48" aria-hidden="true">
+          <g stroke="#f2b84b" stroke-width="3.5" stroke-linecap="round">
+            <path d="M24 3v6M24 39v6M3 24h6M39 24h6M9.2 9.2l4.2 4.2M34.6 34.6l4.2 4.2M9.2 38.8l4.2-4.2M34.6 13.4l4.2-4.2" />
+          </g>
+          <circle cx="24" cy="24" r="12" fill="#ffd36b" />
+          <path d="M19 23q2.5-3 5 0M25 23q2.5-3 5 0" stroke="#6a4f2f" stroke-width="2" fill="none" stroke-linecap="round" />
+          <path d="M21 28q3 3 6 0" stroke="#6a4f2f" stroke-width="2" fill="none" stroke-linecap="round" />
+        </svg>
+        <span><span class="brand-name" id="site-name">ひだまりの まなびば</span><span class="brand-sub">とくべつしえん がくしゅうルーム</span></span>
+      </a>
+      <span class="today-chip" id="today-chip"></span>
+      <div class="header-actions">
+        <button class="icon-btn" id="speak-toggle" aria-pressed="true" title="よみあげ"><span class="em" aria-hidden="true">🔊</span><span class="lbl">よみあげ</span></button>
+        <button class="icon-btn" id="open-settings" title="せってい"><span class="em" aria-hidden="true">⚙️</span><span class="lbl">せってい</span></button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- =====================================================
+         あいさつ ＆ いまの きもち
+    ===================================================== -->
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="panel greet">
+          <button class="mascot" id="mascot" aria-label="ひなたと おはなし する">
+            <svg viewBox="0 0 120 120" aria-hidden="true">
+              <ellipse cx="60" cy="112" rx="30" ry="5" fill="rgba(0,0,0,.08)" />
+              <path d="M60 26q-6-15-20-15q8 11 20 15z" fill="#68b97f" />
+              <path d="M60 26q7-17 23-14q-11 11-23 14z" fill="#8fd19e" />
+              <circle cx="60" cy="66" r="40" fill="#ffd36b" />
+              <ellipse cx="46" cy="48" rx="12" ry="7" fill="#fff" opacity=".45" transform="rotate(-25 46 48)" />
+              <path d="M43 64q5-6 10 0M67 64q5-6 10 0" stroke="#5a4632" stroke-width="4" fill="none" stroke-linecap="round" />
+              <ellipse cx="38" cy="76" rx="7" ry="4.5" fill="#ffa69e" opacity=".75" />
+              <ellipse cx="82" cy="76" rx="7" ry="4.5" fill="#ffa69e" opacity=".75" />
+              <path d="M53 78q7 7 14 0" stroke="#5a4632" stroke-width="4" fill="none" stroke-linecap="round" />
+            </svg>
+          </button>
+          <div class="bubble" id="bubble" aria-live="polite"><b id="greet-title">こんにちは！</b><span id="greet-text">きょうも じぶんの ペースで やってみよう。</span></div>
+        </div>
+
+        <div class="panel kimochi" aria-labelledby="kimochi-h">
+          <h2 class="h3" id="kimochi-h"><span aria-hidden="true">💗</span>いまの きもちは どれかな？</h2>
+          <div class="feels" id="feels" role="group" aria-label="きもちを えらぶ"></div>
+          <div class="feel-msg" id="feel-msg" hidden></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         きょうの よてい
+    ===================================================== -->
+    <section class="section" id="schedule">
+      <div class="wrap">
+        <div class="sec-head">
+          <h2 class="sec-title"><span class="em" aria-hidden="true">🗓️</span>きょうの よてい</h2>
+          <div class="sched-bar"><span id="sched-count">0 / 0</span>
+            <div class="progress" aria-hidden="true"><i id="sched-progress" style="width:0"></i></div>
+          </div>
+        </div>
+        <p class="sec-lead">おわったら カードを タッチしてね。</p>
+        <div class="steps" id="steps"></div>
+        <div class="sched-all" id="sched-all" hidden>🎉 きょうの よていが ぜんぶ おわったよ！ よく がんばったね。</div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         アプリを えらぼう
+         ─────────────────────────────────────────────
+         ★ アプリの追加は、このページのいちばん下にある <script> の中、
+           「APPS」というリストに1行（1かたまり）を足すだけです。
+           カード・タブ・件数はすべて自動で作られます。
+    ===================================================== -->
+    <section class="section" id="apps">
+      <div class="wrap">
+        <div class="sec-head">
+          <h2 class="sec-title"><span class="em" aria-hidden="true">🎒</span>アプリを えらぼう</h2>
+        </div>
+        <div class="tabs" id="tabs" role="tablist" aria-label="アプリの しゅるい"></div>
+        <div class="shelf" id="recent-shelf" hidden><span class="shelf-label">🕒 さいきん つかった</span><span id="recent-row" class="shelf"></span></div>
+        <div class="apps" id="app-grid"></div>
+        <div class="empty" id="app-empty" hidden></div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         どうぐばこ
+    ===================================================== -->
+    <section class="section" id="tools">
+      <div class="wrap">
+        <div class="sec-head">
+          <h2 class="sec-title"><span class="em" aria-hidden="true">🧰</span>どうぐばこ</h2>
+          <p class="sec-lead">こまったときや、じかんを みたいときに つかおう。</p>
+        </div>
+        <div class="panel tools">
+          <div class="tool-tabs" role="tablist" aria-label="どうぐ">
+            <button class="tool-tab" role="tab" data-tool="timer" aria-selected="true"><span class="em" aria-hidden="true">⏳</span>みえる<br>タイマー</button>
+            <button class="tool-tab" role="tab" data-tool="breath" aria-selected="false"><span class="em" aria-hidden="true">🌬️</span>しん<br>こきゅう</button>
+            <button class="tool-tab" role="tab" data-tool="firstthen" aria-selected="false"><span class="em" aria-hidden="true">👉</span>まず<br>→ つぎ</button>
+            <button class="tool-tab" role="tab" data-tool="tell" aria-selected="false"><span class="em" aria-hidden="true">🙋</span>つたえる<br>カード</button>
+            <button class="tool-tab" role="tab" data-tool="stickers" aria-selected="false"><span class="em" aria-hidden="true">🌟</span>シール<br>ちょう</button>
+          </div>
+
+          <!-- 1. みえるタイマー -->
+          <div class="tool tool-center" id="tool-timer" role="tabpanel">
+            <div class="vt-face">
+              <div class="vt-disc" id="vt-disc"></div>
+              <div class="vt-center" id="vt-center"><span id="vt-time">5:00</span><small id="vt-state">のこり</small></div>
+            </div>
+            <div class="seg" id="vt-presets" aria-label="じかんを えらぶ">
+              <button data-min="1">1ぷん</button><button data-min="3">3ぷん</button><button data-min="5" aria-pressed="true">5ふん</button><button data-min="10">10ぷん</button><button data-min="15">15ふん</button><button data-min="20">20ぷん</button>
+            </div>
+            <div class="row">
+              <button class="btn" id="vt-start">▶ スタート</button>
+              <button class="btn btn-sub" id="vt-reset">↺ もどす</button>
+            </div>
+            <div class="row" id="vt-colors" aria-label="いろを えらぶ">
+              <button class="color-dot" style="background:#ef7b6b" data-c="#ef7b6b" aria-label="あか" aria-pressed="true"></button>
+              <button class="color-dot" style="background:#5aa9e6" data-c="#5aa9e6" aria-label="あお" aria-pressed="false"></button>
+              <button class="color-dot" style="background:#5cbf8a" data-c="#5cbf8a" aria-label="みどり" aria-pressed="false"></button>
+              <button class="color-dot" style="background:#f2b84b" data-c="#f2b84b" aria-label="きいろ" aria-pressed="false"></button>
+            </div>
+            <p class="note">いろの ところが へっていくよ。なくなったら おしまい。</p>
+          </div>
+
+          <!-- 2. しんこきゅう -->
+          <div class="tool tool-center" id="tool-breath" role="tabpanel" hidden>
+            <div class="br-stage" aria-live="polite">
+              <div class="br-ring"></div>
+              <div class="br-ball" id="br-ball"></div>
+              <div class="br-text" id="br-text">じゅんび OK？</div>
+            </div>
+            <div class="seg" id="br-rounds" aria-label="なんかい やるか"><button data-r="3">3かい</button><button data-r="5" aria-pressed="true">5かい</button><button data-r="8">8かい</button></div>
+            <div class="row">
+              <button class="btn" id="br-start">▶ はじめる</button>
+              <button class="btn btn-sub" id="br-stop">■ やめる</button>
+            </div>
+            <p class="note" id="br-count">まるが おおきく なったら すう、ちいさく なったら はく よ。</p>
+          </div>
+
+          <!-- 3. まず → つぎ -->
+          <div class="tool tool-center" id="tool-firstthen" role="tabpanel" hidden>
+            <div class="ft">
+              <button class="ft-slot" id="ft-first" data-slot="first"><span class="cap">まず</span><span class="em">＋</span><span class="l">えらぶ</span></button>
+              <div class="ft-arrow" aria-hidden="true">➜</div>
+              <button class="ft-slot" id="ft-then" data-slot="then"><span class="cap">つぎ</span><span class="em">＋</span><span class="l">えらぶ</span></button>
+            </div>
+            <div class="row">
+              <button class="btn btn-good" id="ft-done">✓ まずが できた！</button>
+              <button class="btn btn-sub" id="ft-reset">↺ さいしょから</button>
+            </div>
+            <p class="note">「まず」に やることを、「つぎ」に たのしみを いれよう。カードを タッチすると えらべるよ。</p>
+          </div>
+
+          <!-- 4. つたえる カード -->
+          <div class="tool" id="tool-tell" role="tabpanel" hidden>
+            <p class="note" style="margin-bottom:12px; text-align:center;">つたえたい カードを タッチすると、おおきく なって こえが でるよ。せんせいに みせてね。</p>
+            <div class="tell-grid" id="tell-grid"></div>
+          </div>
+
+          <!-- 5. シールちょう -->
+          <div class="tool" id="tool-stickers" role="tabpanel" hidden>
+            <div class="stk-head">
+              <span id="stk-info">シール 0まい</span>
+              <span id="stk-books" class="note"></span>
+            </div>
+            <div class="stk-book" id="stk-book"></div>
+            <p class="note" style="text-align:center; margin-top:12px;">アプリを ひらく・よていが おわる・タイマーや しんこきゅうを さいごまで やると、シールが もらえるよ（1にち <span id="stk-cap">12</span>まいまで）。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         おうちのかた・せんせいへ
+    ===================================================== -->
+    <section class="section" id="for-adults">
+      <div class="wrap">
+        <div class="panel adults">
+          <h2>保護者の方・先生方へ</h2>
+          <p>特別支援学級の子どもたちが「自分で選んで、見通しをもって、安心して」学べるようにつくった学習サイトです。教室での支援の経験をもとに、アプリを少しずつ増やしていきます。</p>
+          <div class="principles">
+            <div class="principle">
+              <h3>🔤 ひらがな中心・読み上げつき</h3>
+              <p>子ども向けの表示はひらがな・カタカナが中心です。カードの「よむ」ボタンで、名前や説明を音声で聞けます。</p>
+            </div>
+            <div class="principle">
+              <h3>🌤 刺激をおさえたデザイン</h3>
+              <p>まぶしい色や点滅を使わず、落ち着いた配色にしています。「しずかモード」で動きを止められます。</p>
+            </div>
+            <div class="principle">
+              <h3>🗓 見通しをもてる道具</h3>
+              <p>きょうのよてい・みえるタイマー・まず→つぎボードで、「いま何をして、次に何があるか」を目で確かめられます。</p>
+            </div>
+            <div class="principle">
+              <h3>🙋 気持ちを伝える支援</h3>
+              <p>「いまのきもち」と「つたえるカード」で、言葉にしにくい気持ちや要求を、選ぶだけで伝えられます。</p>
+            </div>
+            <div class="principle">
+              <h3>🔧 一人ひとりに合わせて調整</h3>
+              <p>文字の大きさ・配色（白黒くっきり含む）・UDフォントを変えられます。先生用パネルで、表示するアプリやよていを端末ごとに設定できます。</p>
+            </div>
+            <div class="principle">
+              <h3>🔒 登録・個人情報は不要</h3>
+              <p>記録はすべてこの端末のブラウザの中だけに保存され、外部には送信しません。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <span>© <span id="year">2026</span> <span id="footer-name">ひだまりの まなびば</span></span>
+      <button class="btn btn-sub btn-sm hold" id="teacher-open">🔑 せんせい・おうちのかた（ながおし）</button>
+    </div>
+  </footer>
+
+  <!-- =====================================================
+       せってい（子どもも使える）
+  ===================================================== -->
+  <div class="modal" id="m-settings" hidden role="dialog" aria-modal="true" aria-labelledby="set-h">
+    <div class="modal-box">
+      <button class="icon-btn modal-close" data-close aria-label="とじる"><span class="em">✕</span></button>
+      <h2 id="set-h">⚙️ せってい</h2>
+      <div class="set-row"><span>もじの おおきさ</span>
+        <div class="seg" id="set-fs"><button data-v="0.9">ちいさめ</button><button data-v="1">ふつう</button><button data-v="1.15">おおきめ</button><button data-v="1.3">とくだい</button></div>
+      </div>
+      <div class="set-row"><span>いろ<small>みやすい いろを えらんでね</small></span>
+        <div class="themes" id="set-theme">
+          <button class="theme-btn" data-v="hidamari"><i style="background:#fbf6ec"></i>ひだまり</button>
+          <button class="theme-btn" data-v="mori"><i style="background:#e2eedd"></i>もり</button>
+          <button class="theme-btn" data-v="umi"><i style="background:#dfeaf3"></i>うみ</button>
+          <button class="theme-btn" data-v="yoru"><i style="background:#2b303b"></i>よる</button>
+          <button class="theme-btn" data-v="kukkiri"><i style="background:linear-gradient(90deg,#fff 50%,#000 50%)"></i>くっきり</button>
+        </div>
+      </div>
+      <div class="set-row"><span>よみあげ<small>こえで よんでくれるよ</small></span>
+        <div class="seg" id="set-speak"><button data-v="1">つかう</button><button data-v="0">つかわない</button></div>
+      </div>
+      <div class="set-row"><span>よみあげの はやさ</span>
+        <div class="seg" id="set-rate"><button data-v="0.7">ゆっくり</button><button data-v="0.9">ふつう</button><button data-v="1.1">はやめ</button></div>
+      </div>
+      <div class="set-row"><span>おと<small>タイマーや シールの おと</small></span>
+        <div class="seg" id="set-sfx"><button data-v="1">ならす</button><button data-v="0">ならさない</button></div>
+      </div>
+      <div class="set-row"><span>しずかモード<small>うごきを とめて、おちついた がめんに するよ</small></span>
+        <div class="seg" id="set-quiet"><button data-v="0">オフ</button><button data-v="1">オン</button></div>
+      </div>
+      <div class="set-row"><span>UDフォント<small>よみやすい かたちの もじ</small></span>
+        <div class="seg" id="set-ud"><button data-v="0">オフ</button><button data-v="1">オン</button></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- まず→つぎ の えらぶ がめん -->
+  <div class="modal" id="m-picker" hidden role="dialog" aria-modal="true" aria-labelledby="pick-h">
+    <div class="modal-box">
+      <button class="icon-btn modal-close" data-close aria-label="とじる"><span class="em">✕</span></button>
+      <h2 id="pick-h">えらんでね</h2>
+      <div class="picker" id="picker"></div>
+    </div>
+  </div>
+
+  <!-- 先生用パネル -->
+  <div class="modal" id="m-teacher" hidden role="dialog" aria-modal="true" aria-labelledby="t-h">
+    <div class="modal-box wide">
+      <button class="icon-btn modal-close" data-close aria-label="閉じる"><span class="em">✕</span></button>
+      <h2 id="t-h">🔑 先生・保護者用パネル</h2>
+      <div class="t-tabs" role="tablist">
+        <button data-t="sched" aria-selected="true">🗓 よていを作る</button>
+        <button data-t="apps" aria-selected="false">🎒 表示するアプリ</button>
+        <button data-t="feel" aria-selected="false">💗 きもちの記録</button>
+        <button data-t="data" aria-selected="false">💾 データ</button>
+      </div>
+      <div id="t-body"></div>
+    </div>
+  </div>
+
+  <div class="bigcard" id="bigcard" hidden role="dialog" aria-modal="true">
+    <span class="em" id="bigcard-em"></span>
+    <p id="bigcard-text"></p>
+    <div class="row">
+      <button class="btn btn-sub" id="bigcard-say">🔊 もういちど</button>
+      <button class="btn" id="bigcard-close">とじる</button>
+    </div>
+  </div>
+
+  <div id="toasts" aria-live="polite"></div>
+
+  <script>
+    /* =========================================================
+       ★★ サイトの名前（ここを書きかえると、全体の名前が変わります）
+    ========================================================= */
+    const SITE_NAME = 'ひだまりの まなびば';
+
+    /* =========================================================
+       ★★ アプリの しゅるい（タブ）
+       ・アプリが1つもない しゅるいのタブは、自動でかくれます
+       ・color はカードの上の線とアイコンの色です
+    ========================================================= */
+    const CATS = [
+      { id: 'money',    emoji: '💴', label: 'おかね・かいもの', color: '#f0a03c' },
+      { id: 'kazu',     emoji: '🔢', label: 'かず・けいさん',   color: '#5aa9e6' },
+      { id: 'kotoba',   emoji: '✏️', label: 'ことば・もじ',     color: '#e47f9c' },
+      { id: 'tokei',    emoji: '🕒', label: 'とけい・じかん',   color: '#8f7ae6' },
+      { id: 'seikatsu', emoji: '🏠', label: 'せいかつ・ルール', color: '#4fb38c' },
+      { id: 'kimochi',  emoji: '💬', label: 'きもち・はなす',   color: '#ef8a62' },
+      { id: 'asobi',    emoji: '🎲', label: 'あそんで まなぶ', color: '#c9a227' },
+    ];
+
+    /* =========================================================
+       ★★ アプリの いちらん
+       ─────────────────────────────────────────────
+       アプリを追加するときは、下の { … }, を1つコピーして書きかえるだけ！
+
+         {
+           id: 'tokei1',                       ← ほかと重ならない英数字（お気に入りの記録に使います）
+           cat: 'tokei',                       ← 上の CATS の id（どのタブに入るか）
+           emoji: '🕒',                        ← カードの大きな絵（絵文字1つ）
+           title: 'とけいを よもう',           ← アプリの名前（ひらがな中心がおすすめ）
+           desc: 'ながい はりと みじかい はりを よんでみよう！',
+           href: './tokubetushien/tokei/index.html',   ← アプリの場所
+           badge: 'new',                       ← 'new' で「あたらしい」マーク。いらなければ消す
+           // soon: true,                      ← まだ準備中のとき（押せないカードになります）
+           // yomi: 'とけいを よもう。',        ← 読み上げの文を変えたいときだけ
+         },
+
+       ・フォルダは「tokubetushien」の中に作る想定です
+       ・ならび順 ＝ このリストの順番です
+    ========================================================= */
+    const APPS = [
+      {
+        id: 'popcorn',
+        cat: 'money',
+        emoji: '🍿',
+        title: 'ポップコーンを かおう',
+        desc: 'おかねを つかって、ポップコーンを かう れんしゅうを しよう！',
+        href: './tokubetushien/poxtupuko-n/index.html',
+        badge: 'new',
+      },
+    ];
+
+    /* =========================================================
+       ★ きょうの よてい（さいしょの形。先生用パネルで変えられます）
+    ========================================================= */
+    const DEFAULT_SCHED = [
+      { t: '8:30',  e: '☀️', l: 'あさの かい' },
+      { t: '8:45',  e: '📖', l: 'こくご' },
+      { t: '9:35',  e: '🔢', l: 'さんすう' },
+      { t: '10:20', e: '⚽', l: 'やすみじかん' },
+      { t: '10:45', e: '💻', l: 'タブレット' },
+      { t: '12:15', e: '🍚', l: 'きゅうしょく' },
+      { t: '13:00', e: '🧹', l: 'そうじ' },
+      { t: '13:50', e: '👋', l: 'かえりの かい' },
+    ];
+
+    /* きもち */
+    const FEELINGS = [
+      { id: 'genki',    e: '😄', l: 'げんき',   msg: 'げんき いっぱいだね！ きょうも いっしょに がんばろう。' },
+      { id: 'futsuu',   e: '🙂', l: 'ふつう',   msg: 'おしえてくれて ありがとう。じぶんの ペースで いこうね。' },
+      { id: 'tsukare',  e: '😪', l: 'つかれた', msg: 'つかれて いるんだね。すこし やすんでも だいじょうぶ だよ。', calm: true },
+      { id: 'kanashii', e: '😢', l: 'かなしい', msg: 'かなしい きもち なんだね。せんせいに おはなし してみよう。', calm: true },
+      { id: 'iraira',   e: '😠', l: 'いらいら', msg: 'いらいら するときも あるよね。いっしょに しんこきゅう しよう。', calm: true },
+      { id: 'shinpai',  e: '😟', l: 'しんぱい', msg: 'しんぱいな ことが あるんだね。せんせいに つたえて みよう。', calm: true },
+    ];
+
+    /* まず→つぎ で えらべる もの */
+    const ACTS = [
+      { e: '📚', l: 'べんきょう' }, { e: '📝', l: 'プリント' }, { e: '💻', l: 'タブレット' }, { e: '📖', l: 'ほんを よむ' },
+      { e: '🖍️', l: 'おえかき' }, { e: '🧱', l: 'ブロック' }, { e: '🧩', l: 'パズル' }, { e: '🎵', l: 'おんがく' },
+      { e: '🛋️', l: 'やすむ' }, { e: '🌳', l: 'そとで あそぶ' }, { e: '🤸', l: 'うんどう' }, { e: '🍚', l: 'きゅうしょく' },
+      { e: '🧹', l: 'かたづけ' }, { e: '🧼', l: 'てを あらう' }, { e: '🚻', l: 'トイレ' }, { e: '⭐', l: 'すきな こと' },
+    ];
+
+    /* つたえる カード */
+    const TELL = [
+      { e: '🙋', l: 'てつだって ください' },
+      { e: '❓', l: 'わかりません。もういちど おしえて ください' },
+      { e: '🛋️', l: 'すこし やすみたい です' },
+      { e: '🚻', l: 'トイレに いきたい です' },
+      { e: '🥤', l: 'みずを のみたい です' },
+      { e: '🙉', l: 'うるさくて つらい です' },
+      { e: '🤕', l: 'からだの ちょうしが わるい です' },
+      { e: '⭐', l: 'できました！ みて ください' },
+    ];
+
+    const STICKER_POOL = ['🍎', '🍓', '🍊', '🍌', '🍇', '🍑', '🌸', '🌻', '🌷', '⭐', '🌈', '🎈', '🐶', '🐱', '🐰', '🐻', '🐼', '🐥', '🐟', '🐢', '🚗', '🚃', '🚀', '🍩', '🍙', '🍰', '⚽', '🎵', '🦋', '🍀'];
+    const BOOK_SIZE = 20; // シールちょう 1さつの まいすう
+    const DAILY_CAP = 12; // 1にちに もらえる シールの じょうげん
+
+    /* =========================================================
+       ここから下は しくみ（ふだんは さわらなくて OK）
+    ========================================================= */
+    const $ = s => document.querySelector(s);
+    const $$ = s => [...document.querySelectorAll(s)];
+    const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    const pick = a => a[Math.floor(Math.random() * a.length)];
+    const PREFIX = 'hdm_';
+    const store = {
+      get(k, d) {
+        try {
+          const v = localStorage.getItem(PREFIX + k);
+          return v === null ? d : JSON.parse(v);
+        } catch (e) {
+          return d;
+        }
+      },
+      set(k, v) {
+        try {
+          localStorage.setItem(PREFIX + k, JSON.stringify(v));
+        } catch (e) {}
+      }
+    };
+    const todayKey = () => {
+      const d = new Date();
+      return `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
+    };
+    const catOf = id => CATS.find(c => c.id === id) || { id, emoji: '📁', label: id, color: '#999' };
+
+    /* ---------- せってい ---------- */
+    const DEFAULT_SETTINGS = {
+      fs: 1, theme: 'hidamari', speak: true, rate: 0.9, sfx: true,
+      quiet: window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches,
+      ud: false
+    };
+    let S = Object.assign({}, DEFAULT_SETTINGS, store.get('settings', {}));
+
+    function applySettings() {
+      document.documentElement.style.setProperty('--fs', S.fs);
+      document.body.className = document.body.className.replace(/\btheme-\S+/g, '').trim();
+      if (S.theme !== 'hidamari') document.body.classList.add('theme-' + S.theme);
+      document.body.classList.toggle('quiet', !!S.quiet);
+      document.body.classList.toggle('ud', !!S.ud);
+      $('#speak-toggle').setAttribute('aria-pressed', S.speak);
+      const mark = (sel, val) => $$(sel + ' button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.v) === String(val)));
+      mark('#set-fs', S.fs);
+      mark('#set-theme', S.theme);
+      mark('#set-speak', S.speak ? 1 : 0);
+      mark('#set-rate', S.rate);
+      mark('#set-sfx', S.sfx ? 1 : 0);
+      mark('#set-quiet', S.quiet ? 1 : 0);
+      mark('#set-ud', S.ud ? 1 : 0);
+      const meta = document.querySelector('meta[name="theme-color"]');
+      if (meta) meta.content = getComputedStyle(document.body).getPropertyValue('--bg').trim() || '#fbf6ec';
+    }
+
+    function saveSettings() {
+      store.set('settings', S);
+      applySettings();
+    }
+    const settingMap = {
+      '#set-fs': v => S.fs = parseFloat(v),
+      '#set-theme': v => S.theme = v,
+      '#set-speak': v => S.speak = v === '1',
+      '#set-rate': v => S.rate = parseFloat(v),
+      '#set-sfx': v => S.sfx = v === '1',
+      '#set-quiet': v => S.quiet = v === '1',
+      '#set-ud': v => S.ud = v === '1',
+    };
+    Object.entries(settingMap).forEach(([sel, fn]) => {
+      $(sel).addEventListener('click', e => {
+        const b = e.target.closest('button');
+        if (!b) return;
+        fn(b.dataset.v);
+        saveSettings();
+        if (sel === '#set-rate' || sel === '#set-speak') say('この はやさで よむよ');
+      });
+    });
+    $('#speak-toggle').addEventListener('click', () => {
+      S.speak = !S.speak;
+      saveSettings();
+      if (S.speak) say('よみあげを つかうよ');
+      else {
+        try { speechSynthesis.cancel(); } catch (e) {}
+        toast('🔇 よみあげを とめたよ');
+      }
+    });
+
+    /* ---------- よみあげ ---------- */
+    let jaVoice = null;
+
+    function loadVoice() {
+      try {
+        const vs = speechSynthesis.getVoices();
+        jaVoice = vs.find(v => /ja[-_]JP/i.test(v.lang) && /Google|Kyoko|Nanami|Haruka/i.test(v.name)) || vs.find(v => /ja/i.test(v.lang)) || null;
+      } catch (e) {}
+    }
+    if ('speechSynthesis' in window) {
+      loadVoice();
+      speechSynthesis.onvoiceschanged = loadVoice;
+    }
+
+    function say(text, force) {
+      if ((!S.speak && !force) || !('speechSynthesis' in window)) return;
+      try {
+        speechSynthesis.cancel();
+        const u = new SpeechSynthesisUtterance(text.replace(/[→➜]/g, '、'));
+        u.lang = 'ja-JP';
+        u.rate = S.rate;
+        if (jaVoice) u.voice = jaVoice;
+        speechSynthesis.speak(u);
+      } catch (e) {}
+    }
+
+    /* ---------- おと（やさしい チャイム） ---------- */
+    let actx = null;
+
+    function chime(notes = [660, 880], gap = .18) {
+      if (!S.sfx) return;
+      try {
+        actx = actx || new(window.AudioContext || window.webkitAudioContext)();
+        notes.forEach((f, i) => {
+          const o = actx.createOscillator(), g = actx.createGain();
+          const t = actx.currentTime + i * gap;
+          o.type = 'sine';
+          o.frequency.value = f;
+          g.gain.setValueAtTime(0, t);
+          g.gain.linearRampToValueAtTime(.16, t + .03);
+          g.gain.exponentialRampToValueAtTime(.001, t + .9);
+          o.connect(g).connect(actx.destination);
+          o.start(t);
+          o.stop(t + 1);
+        });
+      } catch (e) {}
+    }
+
+    function toast(msg, ms = 2400) {
+      const el = document.createElement('div');
+      el.className = 'toast';
+      el.textContent = msg;
+      $('#toasts').appendChild(el);
+      setTimeout(() => el.remove(), ms);
+    }
+
+    /* ---------- モーダル ---------- */
+    let lastFocus = null;
+
+    function openModal(id) {
+      lastFocus = document.activeElement;
+      const m = $('#' + id);
+      m.hidden = false;
+      const f = m.querySelector('[data-close]') || m.querySelector('button');
+      setTimeout(() => f && f.focus(), 30);
+    }
+
+    function closeModal(m) {
+      m.hidden = true;
+      if (lastFocus) lastFocus.focus();
+    }
+    $$('.modal').forEach(m => {
+      m.addEventListener('click', e => {
+        if (e.target === m || e.target.closest('[data-close]')) closeModal(m);
+      });
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key !== 'Escape') return;
+      const open = $$('.modal').find(m => !m.hidden);
+      if (open) closeModal(open);
+      if (!$('#bigcard').hidden) closeBigcard();
+    });
+    $('#open-settings').addEventListener('click', () => {
+      openModal('m-settings');
+      say('せってい');
+    });
+
+    /* ---------- ひづけ・あいさつ ---------- */
+    const WD = ['にち', 'げつ', 'か', 'すい', 'もく', 'きん', 'ど'];
+
+    function renderGreeting() {
+      const d = new Date(), h = d.getHours();
+      $('#today-chip').textContent = `${d.getMonth() + 1}がつ ${d.getDate()}にち（${WD[d.getDay()]}ようび）`;
+      $('#greet-title').textContent = h < 10 && h >= 4 ? 'おはよう！' : h < 17 && h >= 4 ? 'こんにちは！' : 'こんばんは！';
+      $('#year').textContent = d.getFullYear();
+    }
+    const MASCOT_LINES = [
+      'きょうも じぶんの ペースで やってみよう。',
+      'まちがえても だいじょうぶ。もういちど やってみよう！',
+      'つかれたら、しんこきゅう してみてね。',
+      'こまったら「つたえる カード」を つかってね。',
+      'できたら シールが もらえるよ！',
+      'ゆっくりで いいよ。ひとつずつ やろうね。',
+    ];
+    $('#mascot').addEventListener('click', () => {
+      const cur = $('#greet-text').textContent;
+      let line = pick(MASCOT_LINES);
+      if (line === cur) line = MASCOT_LINES[(MASCOT_LINES.indexOf(line) + 1) % MASCOT_LINES.length];
+      $('#greet-text').textContent = line;
+      say(line);
+    });
+
+    /* ---------- いまの きもち ---------- */
+    function renderFeels() {
+      const log = store.get('feel_log', []);
+      const today = log.filter(x => x.d === todayKey()).pop();
+      $('#feels').innerHTML = FEELINGS.map(f =>
+        `<button class="feel" data-id="${f.id}" aria-pressed="${today && today.id === f.id}"><span class="em" aria-hidden="true">${f.e}</span>${f.l}</button>`).join('');
+      if (today) showFeelMsg(FEELINGS.find(f => f.id === today.id), false);
+    }
+
+    function showFeelMsg(f, speak = true) {
+      if (!f) return;
+      const box = $('#feel-msg');
+      box.hidden = false;
+      box.innerHTML = `<p>${esc(f.msg)}</p>` + (f.calm ? `<button class="btn btn-sm" data-go="breath">🌬️ しんこきゅう</button><button class="btn btn-sub btn-sm" data-go="tell">🙋 つたえる</button>` : '');
+      if (speak) say(f.l + '。' + f.msg);
+    }
+    $('#feels').addEventListener('click', e => {
+      const b = e.target.closest('.feel');
+      if (!b) return;
+      const f = FEELINGS.find(x => x.id === b.dataset.id);
+      const log = store.get('feel_log', []);
+      const now = new Date();
+      log.push({ d: todayKey(), ts: now.getTime(), id: f.id });
+      while (log.length > 200) log.shift();
+      store.set('feel_log', log);
+      $$('#feels .feel').forEach(x => x.setAttribute('aria-pressed', x === b));
+      showFeelMsg(f);
+    });
+    $('#feel-msg').addEventListener('click', e => {
+      const b = e.target.closest('[data-go]');
+      if (!b) return;
+      selectTool(b.dataset.go);
+      $('#tools').scrollIntoView({ behavior: S.quiet ? 'auto' : 'smooth' });
+    });
+
+    /* ---------- きょうの よてい ---------- */
+    const getSched = () => store.get('sched', DEFAULT_SCHED);
+
+    function getDone() {
+      let st = store.get('sched_done', { d: '', done: [] });
+      if (st.d !== todayKey()) st = { d: todayKey(), done: [] };
+      return st;
+    }
+
+    function renderSched() {
+      const list = getSched(), st = getDone();
+      const open = list.map((_, i) => i).filter(i => !st.done.includes(i));
+      const nowI = open[0], nextI = open[1];
+      $('#steps').innerHTML = list.map((s, i) => {
+        const done = st.done.includes(i);
+        const cls = done ? 'done' : i === nowI ? 'now' : i === nextI ? 'next' : '';
+        const tag = i === nowI ? '<span class="tag">いま</span>' : i === nextI ? '<span class="tag">つぎ</span>' : '';
+        return `<button class="step ${cls}" data-i="${i}" aria-pressed="${done}" aria-label="${esc(s.l)}${done ? '（おわり）' : ''}">${tag}<span class="t">${esc(s.t || '')}</span><span class="em" aria-hidden="true">${esc(s.e || '⭐')}</span><span class="l">${esc(s.l)}</span></button>`;
+      }).join('');
+      const n = st.done.filter(i => i < list.length).length;
+      $('#sched-count').textContent = `${n} / ${list.length} できた`;
+      $('#sched-progress').style.width = list.length ? (n / list.length * 100) + '%' : '0';
+      $('#sched-all').hidden = !(list.length && n === list.length);
+      const nowEl = $('#steps .step.now');
+      if (nowEl) {
+        const box = $('#steps');
+        box.scrollLeft = Math.max(0, nowEl.offsetLeft - box.offsetLeft - 16);
+      }
+    }
+    $('#steps').addEventListener('click', e => {
+      const b = e.target.closest('.step');
+      if (!b) return;
+      const i = +b.dataset.i, st = getDone(), s = getSched()[i];
+      if (st.done.includes(i)) {
+        st.done = st.done.filter(x => x !== i);
+        say(s.l + '。もどしたよ');
+      } else {
+        st.done.push(i);
+        chime([523, 659, 784], .12);
+        const nxt = getSched().find((_, k) => k !== i && !st.done.includes(k));
+        say(s.l + '、おわり！' + (nxt ? 'つぎは ' + nxt.l + '。' : ''));
+        award('sched-' + i);
+      }
+      store.set('sched_done', st);
+      renderSched();
+    });
+
+    /* ---------- アプリ ---------- */
+    let curTab = store.get('tab', 'all');
+    const hiddenApps = () => store.get('hidden_apps', []);
+    const visibleApps = () => APPS.filter(a => !hiddenApps().includes(a.id));
+    let favs = store.get('favs', []);
+
+    function renderTabs() {
+      const apps = visibleApps();
+      const cats = CATS.filter(c => apps.some(a => a.cat === c.id));
+      if (!['all', 'fav', ...cats.map(c => c.id)].includes(curTab)) curTab = 'all';
+      const favN = apps.filter(a => favs.includes(a.id)).length;
+      let html = `<button class="tab" role="tab" data-tab="all" aria-selected="${curTab === 'all'}"><span class="em" aria-hidden="true">🌈</span>ぜんぶ<span class="n">${apps.length}</span></button>`;
+      html += `<button class="tab" role="tab" data-tab="fav" style="--c:#e2b33b" aria-selected="${curTab === 'fav'}"><span class="em" aria-hidden="true">⭐</span>すき<span class="n">${favN}</span></button>`;
+      html += cats.map(c => `<button class="tab" role="tab" data-tab="${c.id}" style="--c:${c.color}" aria-selected="${curTab === c.id}"><span class="em" aria-hidden="true">${c.emoji}</span>${esc(c.label)}<span class="n">${apps.filter(a => a.cat === c.id).length}</span></button>`).join('');
+      $('#tabs').innerHTML = html;
+    }
+
+    function cardHTML(a) {
+      const c = catOf(a.cat);
+      const isFav = favs.includes(a.id);
+      const badge = a.soon ? '<span class="badge soon">じゅんびちゅう</span>' : a.badge === 'new' ? '<span class="badge">あたらしい</span>' : '';
+      const linkOpen = a.soon ? `<div class="app-link" aria-disabled="true">` : `<a class="app-link" href="${esc(a.href)}" data-id="${esc(a.id)}">`;
+      const linkClose = a.soon ? '</div>' : '</a>';
+      return `<article class="app ${a.soon ? 'is-soon' : ''}" style="--c:${c.color}" data-id="${esc(a.id)}">
+        ${linkOpen}<span class="app-emoji" aria-hidden="true">${a.emoji || c.emoji}</span>
+          <span class="app-cat">${c.emoji} ${esc(c.label)}</span>
+          <strong class="app-title">${esc(a.title)}</strong>
+          <span class="app-desc">${esc(a.desc || '')}</span>${linkClose}
+        <div class="app-actions">
+          <button class="say" type="button" aria-label="${esc(a.title)}を よみあげる">🔊 よむ</button>
+          <button class="fav" type="button" aria-pressed="${isFav}" aria-label="すきに いれる">${isFav ? '⭐ すき' : '☆ すき'}</button>
+        </div>${badge}
+      </article>`;
+    }
+
+    function renderApps() {
+      renderTabs();
+      const apps = visibleApps();
+      const list = curTab === 'all' ? apps : curTab === 'fav' ? apps.filter(a => favs.includes(a.id)) : apps.filter(a => a.cat === curTab);
+      $('#app-grid').innerHTML = list.map(cardHTML).join('');
+      const empty = $('#app-empty');
+      empty.hidden = list.length > 0;
+      if (!list.length) empty.innerHTML = curTab === 'fav' ?
+        '<span class="em">⭐</span>カードの「☆ すき」を おすと、ここに あつまるよ。' :
+        '<span class="em">🌱</span>アプリは じゅんびちゅう です。もうすこし まってね。';
+      const recent = store.get('recent', []).map(id => apps.find(a => a.id === id)).filter(Boolean);
+      $('#recent-shelf').hidden = curTab !== 'all' || recent.length === 0;
+      $('#recent-row').innerHTML = recent.map(a => `<a class="pill" href="${esc(a.href)}" data-id="${esc(a.id)}"><span class="em" aria-hidden="true">${a.emoji}</span>${esc(a.title)}</a>`).join('');
+    }
+    $('#tabs').addEventListener('click', e => {
+      const b = e.target.closest('.tab');
+      if (!b) return;
+      curTab = b.dataset.tab;
+      store.set('tab', curTab);
+      renderApps();
+      say(b.textContent.replace(/\d+$/, ''));
+      const nb = $(`#tabs .tab[data-tab="${curTab}"]`);
+      if (nb) nb.focus();
+    });
+
+    function openApp(e, link) {
+      const id = link.dataset.id;
+      let recent = store.get('recent', []).filter(x => x !== id);
+      recent.unshift(id);
+      store.set('recent', recent.slice(0, 5));
+      const got = award('app-' + id, true);
+      // シールが もらえたときは、すこし みせてから ひらく
+      if (got && !S.quiet && !(e.ctrlKey || e.metaKey || e.shiftKey)) {
+        e.preventDefault();
+        setTimeout(() => { location.href = link.href; }, 1100);
+      }
+    }
+    document.addEventListener('click', e => {
+      const link = e.target.closest('a.app-link, #recent-row a.pill');
+      if (link) return openApp(e, link);
+      const card = e.target.closest('.app');
+      if (!card) return;
+      const a = APPS.find(x => x.id === card.dataset.id);
+      if (e.target.closest('.say')) say(a.yomi || (a.title + '。' + (a.desc || '')), true);
+      if (e.target.closest('.fav')) {
+        if (favs.includes(a.id)) {
+          favs = favs.filter(x => x !== a.id);
+          say('すきから はずしたよ');
+        } else {
+          favs.push(a.id);
+          say('すきに いれたよ');
+          toast('⭐ 「すき」に いれたよ');
+        }
+        store.set('favs', favs);
+        renderApps();
+      }
+    });
+
+    /* ---------- どうぐばこ ---------- */
+    function selectTool(name) {
+      $$('.tool-tab').forEach(t => t.setAttribute('aria-selected', t.dataset.tool === name));
+      $$('.tool').forEach(p => p.hidden = p.id !== 'tool-' + name);
+      store.set('tool', name);
+    }
+    $$('.tool-tab').forEach(t => t.addEventListener('click', () => {
+      selectTool(t.dataset.tool);
+      say(t.textContent.trim());
+    }));
+
+    /* 1. みえる タイマー */
+    const vt = { total: 300, remain: 300, running: false, end: 0, iv: null };
+
+    function vtFmt(sec) {
+      sec = Math.ceil(sec);
+      return Math.floor(sec / 60) + ':' + String(sec % 60).padStart(2, '0');
+    }
+
+    function vtRender() {
+      $('#vt-disc').style.setProperty('--p', vt.total ? vt.remain / vt.total : 0);
+      $('#vt-time').textContent = vtFmt(vt.remain);
+      $('#vt-start').textContent = vt.running ? '❚❚ とめる' : vt.remain < vt.total && vt.remain > 0 ? '▶ つづける' : '▶ スタート';
+    }
+
+    function vtSet(min) {
+      vtStop();
+      vt.total = vt.remain = min * 60;
+      $('#vt-state').textContent = 'のこり';
+      $$('#vt-presets button').forEach(b => b.setAttribute('aria-pressed', +b.dataset.min === min));
+      store.set('vt_min', min);
+      vtRender();
+    }
+
+    function vtStop() {
+      clearInterval(vt.iv);
+      vt.running = false;
+    }
+    $('#vt-presets').addEventListener('click', e => {
+      const b = e.target.closest('button');
+      if (!b) return;
+      vtSet(+b.dataset.min);
+      say(b.textContent);
+    });
+    $('#vt-start').addEventListener('click', () => {
+      if (vt.running) {
+        vtStop();
+        vt.remain = Math.max(0, (vt.end - Date.now()) / 1000);
+        vtRender();
+        return;
+      }
+      if (vt.remain <= 0) vt.remain = vt.total;
+      vt.end = Date.now() + vt.remain * 1000;
+      vt.running = true;
+      $('#vt-state').textContent = 'のこり';
+      say('スタート');
+      vt.iv = setInterval(() => {
+        vt.remain = Math.max(0, (vt.end - Date.now()) / 1000);
+        vtRender();
+        if (vt.remain <= 0) {
+          vtStop();
+          vtRender();
+          $('#vt-state').textContent = 'おしまい！';
+          chime([784, 659, 523, 659, 784], .3);
+          say('おしまい！ よく がんばったね。');
+          if (vt.total >= 60) award('timer-' + Date.now());
+        }
+      }, 200);
+      vtRender();
+    });
+    $('#vt-reset').addEventListener('click', () => vtSet(vt.total / 60));
+    $('#vt-colors').addEventListener('click', e => {
+      const b = e.target.closest('.color-dot');
+      if (!b) return;
+      $('#vt-disc').style.setProperty('--vt', b.dataset.c);
+      $$('#vt-colors .color-dot').forEach(x => x.setAttribute('aria-pressed', x === b));
+      store.set('vt_color', b.dataset.c);
+    });
+
+    /* 2. しんこきゅう */
+    const br = { on: false, round: 0, rounds: 5, t: null };
+
+    function brStep(phase) {
+      if (!br.on) return;
+      const ball = $('#br-ball');
+      if (phase === 'in') {
+        ball.classList.add('big');
+        $('#br-text').textContent = 'すって…';
+        say('すって', false);
+        br.t = setTimeout(() => brStep('out'), 4000);
+      } else {
+        ball.classList.remove('big');
+        $('#br-text').textContent = 'はいて…';
+        say('はいて', false);
+        br.t = setTimeout(() => {
+          br.round++;
+          $('#br-count').textContent = `${br.round} / ${br.rounds} かい`;
+          if (br.round >= br.rounds) {
+            brEnd(true);
+          } else brStep('in');
+        }, 4000);
+      }
+    }
+
+    function brEnd(finished) {
+      br.on = false;
+      clearTimeout(br.t);
+      $('#br-ball').classList.remove('big');
+      $('#br-start').textContent = '▶ はじめる';
+      if (finished) {
+        $('#br-text').textContent = 'おちついたね';
+        chime([523, 659], .25);
+        say('よく できました。おちついたね。');
+        award('breath-' + Date.now());
+      } else {
+        $('#br-text').textContent = 'じゅんび OK？';
+        $('#br-count').textContent = 'まるが おおきく なったら すう、ちいさく なったら はく よ。';
+      }
+    }
+    $('#br-rounds').addEventListener('click', e => {
+      const b = e.target.closest('button');
+      if (!b) return;
+      br.rounds = +b.dataset.r;
+      $$('#br-rounds button').forEach(x => x.setAttribute('aria-pressed', x === b));
+    });
+    $('#br-start').addEventListener('click', () => {
+      if (br.on) return;
+      br.on = true;
+      br.round = 0;
+      $('#br-count').textContent = `0 / ${br.rounds} かい`;
+      $('#br-start').textContent = '…しんこきゅう ちゅう';
+      brStep('in');
+    });
+    $('#br-stop').addEventListener('click', () => brEnd(false));
+
+    /* 3. まず → つぎ */
+    let ft = store.get('ft', { first: null, then: null, done: false });
+    let pickTarget = null;
+
+    function renderFT() {
+      ['first', 'then'].forEach(k => {
+        const el = $('#ft-' + k), v = ft[k];
+        el.classList.toggle('filled', !!v);
+        el.querySelector('.em').textContent = v ? v.e : '＋';
+        el.querySelector('.l').textContent = v ? v.l : 'えらぶ';
+      });
+      $('#ft-first').classList.toggle('active', !ft.done && !!ft.first);
+      $('#ft-first').classList.toggle('done', ft.done);
+      $('#ft-then').classList.toggle('active', ft.done && !!ft.then);
+      $('#ft-done').disabled = !ft.first || ft.done;
+    }
+    $$('.ft-slot').forEach(s => s.addEventListener('click', () => {
+      pickTarget = s.dataset.slot;
+      $('#pick-h').textContent = pickTarget === 'first' ? '「まず」 やる ことを えらんでね' : '「つぎ」の たのしみを えらんでね';
+      $('#picker').innerHTML = ACTS.map((a, i) => `<button data-i="${i}"><span class="em" aria-hidden="true">${a.e}</span>${esc(a.l)}</button>`).join('');
+      openModal('m-picker');
+      say(pickTarget === 'first' ? 'まず、やることを えらんでね' : 'つぎの たのしみを えらんでね');
+    }));
+    $('#picker').addEventListener('click', e => {
+      const b = e.target.closest('button');
+      if (!b) return;
+      ft[pickTarget] = ACTS[+b.dataset.i];
+      if (pickTarget === 'first') ft.done = false;
+      store.set('ft', ft);
+      closeModal($('#m-picker'));
+      renderFT();
+      if (ft.first && ft.then) say('まず ' + ft.first.l + '。つぎは ' + ft.then.l + '。');
+      else say(ft[pickTarget].l);
+    });
+    $('#ft-done').addEventListener('click', () => {
+      ft.done = true;
+      store.set('ft', ft);
+      renderFT();
+      chime([523, 659, 784], .12);
+      say('できたね！ つぎは ' + (ft.then ? ft.then.l : 'おたのしみ') + '！');
+      award('ft-' + Date.now());
+    });
+    $('#ft-reset').addEventListener('click', () => {
+      ft = { first: null, then: null, done: false };
+      store.set('ft', ft);
+      renderFT();
+    });
+
+    /* 4. つたえる カード */
+    $('#tell-grid').innerHTML = TELL.map((t, i) => `<button class="tell" data-i="${i}"><span class="em" aria-hidden="true">${t.e}</span>${esc(t.l)}</button>`).join('');
+    let bigText = '';
+    $('#tell-grid').addEventListener('click', e => {
+      const b = e.target.closest('.tell');
+      if (!b) return;
+      const t = TELL[+b.dataset.i];
+      lastFocus = b;
+      bigText = t.l;
+      $('#bigcard-em').textContent = t.e;
+      $('#bigcard-text').textContent = t.l;
+      $('#bigcard').hidden = false;
+      $('#bigcard-close').focus();
+      chime([660], .1);
+      say(t.l, true); // つたえるカードは よみあげ オフでも こえを だす
+    });
+
+    function closeBigcard() {
+      $('#bigcard').hidden = true;
+      try { speechSynthesis.cancel(); } catch (e) {}
+      if (lastFocus) lastFocus.focus();
+    }
+    $('#bigcard-close').addEventListener('click', closeBigcard);
+    $('#bigcard-say').addEventListener('click', () => say(bigText, true));
+
+    /* 5. シール */
+    function award(key, beforeLeave) {
+      const d = todayKey();
+      let day = store.get('stk_day', { d: '', n: 0, keys: [] });
+      if (day.d !== d) day = { d, n: 0, keys: [] };
+      if (day.n >= DAILY_CAP || day.keys.includes(key)) return null;
+      const e = pick(STICKER_POOL);
+      const all = store.get('stickers', []);
+      all.push(e);
+      store.set('stickers', all);
+      day.n++;
+      day.keys.push(key);
+      store.set('stk_day', day);
+      renderStickers();
+      const full = all.length % BOOK_SIZE === 0;
+      if (S.quiet) toast(`${e} シール ゲット！`);
+      else {
+        const p = document.createElement('div');
+        p.className = 'stk-pop';
+        p.innerHTML = `<div><span class="em">${e}</span>シール ゲット！${full ? '<small>シールちょうが 1さつ かんせい！</small>' : ''}</div>`;
+        document.body.appendChild(p);
+        setTimeout(() => p.remove(), 1500);
+      }
+      chime([880, 1175], .1);
+      if (!beforeLeave) setTimeout(() => say(full ? 'シールちょうが 1さつ かんせい！ すごいね！' : 'シール ゲット！'), 600);
+      return e;
+    }
+
+    function renderStickers() {
+      const all = store.get('stickers', []);
+      const books = Math.floor(all.length / BOOK_SIZE);
+      const cur = all.slice(books * BOOK_SIZE);
+      $('#stk-book').innerHTML = Array.from({ length: BOOK_SIZE }, (_, i) =>
+        cur[i] ? `<span class="stk on" aria-label="シール">${cur[i]}</span>` : `<span class="stk" aria-hidden="true"></span>`).join('');
+      $('#stk-info').textContent = `🌟 いままでの シール ${all.length}まい`;
+      $('#stk-books').textContent = books ? `かんせいした シールちょう：${'📒'.repeat(Math.min(books, 10))}${books > 10 ? ' ×' + books : ''}` : `あと ${BOOK_SIZE - cur.length}まいで 1さつ かんせい！`;
+      $('#stk-cap').textContent = DAILY_CAP;
+    }
+
+    /* =========================================================
+       先生・保護者用パネル（ボタンを1.5秒ながおしで開きます）
+    ========================================================= */
+    function bindLongPress(el, fn, ms = 1500) {
+      let t = null;
+      const start = () => {
+        if (t) return;
+        el.classList.add('pressing');
+        t = setTimeout(() => {
+          cancel();
+          fn();
+        }, ms);
+      };
+      const cancel = () => {
+        clearTimeout(t);
+        t = null;
+        el.classList.remove('pressing');
+      };
+      el.addEventListener('pointerdown', start);
+      ['pointerup', 'pointerleave', 'pointercancel'].forEach(ev => el.addEventListener(ev, cancel));
+      el.addEventListener('keydown', e => {
+        if ((e.key === 'Enter' || e.key === ' ') && !e.repeat) {
+          e.preventDefault();
+          start();
+        }
+      });
+      el.addEventListener('keyup', e => {
+        if (e.key === 'Enter' || e.key === ' ') cancel();
+      });
+      el.addEventListener('contextmenu', e => e.preventDefault());
+      el.addEventListener('click', () => {
+        if (!$('#m-teacher').hidden) return;
+        toast('🔑 ボタンを 1.5びょう ながおし してね');
+      });
+    }
+    bindLongPress($('#teacher-open'), () => {
+      openModal('m-teacher');
+      teacherTab('sched');
+    });
+
+    let tTab = 'sched';
+    $('.t-tabs').addEventListener('click', e => {
+      const b = e.target.closest('button');
+      if (b) teacherTab(b.dataset.t);
+    });
+
+    function teacherTab(name) {
+      tTab = name;
+      $$('.t-tabs button').forEach(b => b.setAttribute('aria-selected', b.dataset.t === name));
+      const body = $('#t-body');
+      if (name === 'sched') {
+        body.innerHTML = schedEditorHTML();
+        schRows();
+      }
+      if (name === 'apps') body.innerHTML = appsEditorHTML();
+      if (name === 'feel') body.innerHTML = feelLogHTML();
+      if (name === 'data') body.innerHTML = dataHTML();
+    }
+
+    /* よていの編集 */
+    let draft = null;
+
+    function schedEditorHTML() {
+      draft = JSON.parse(JSON.stringify(getSched()));
+      return `<div class="t-help">きょうのよていを作ります。絵文字・時刻・名前を入れて「保存」を押してください。チェック（おわった印）は毎日自動でリセットされます。</div>
+        <table class="t-table"><thead><tr><th>時刻</th><th>絵</th><th>なまえ（ひらがな推奨）</th><th>ならびかえ・削除</th></tr></thead><tbody id="sch-rows"></tbody></table>
+        <div class="row" style="justify-content:flex-start; margin-top:12px;">
+          <button class="btn btn-sub btn-sm" onclick="schAdd()">＋ 行を追加</button>
+          <button class="btn btn-sub btn-sm" onclick="schDefault()">はじめの形にもどす</button>
+          <button class="btn btn-sm" onclick="schSave()" style="margin-left:auto;">💾 保存</button>
+        </div>`;
+    }
+
+    function schRows() {
+      const tb = $('#sch-rows');
+      if (!tb) return;
+      tb.innerHTML = draft.map((s, i) => `<tr>
+        <td><input class="input time-in" value="${esc(s.t || '')}" data-k="t" data-i="${i}" placeholder="9:00" aria-label="時刻"></td>
+        <td><input class="input em-in" value="${esc(s.e || '')}" data-k="e" data-i="${i}" aria-label="絵文字"></td>
+        <td><input class="input" value="${esc(s.l || '')}" data-k="l" data-i="${i}" maxlength="16" aria-label="なまえ"></td>
+        <td style="white-space:nowrap;"><button class="mini" onclick="schMove(${i},-1)" aria-label="上へ">▲</button> <button class="mini" onclick="schMove(${i},1)" aria-label="下へ">▼</button> <button class="mini" onclick="schDel(${i})" aria-label="削除">🗑</button></td></tr>`).join('');
+    }
+    document.addEventListener('input', e => {
+      const inp = e.target.closest('#sch-rows input');
+      if (inp) draft[+inp.dataset.i][inp.dataset.k] = inp.value;
+    });
+
+    function schAdd() {
+      draft.push({ t: '', e: '⭐', l: '' });
+      schRows();
+    }
+
+    function schDel(i) {
+      draft.splice(i, 1);
+      schRows();
+    }
+
+    function schMove(i, d) {
+      const j = i + d;
+      if (j < 0 || j >= draft.length) return;
+      [draft[i], draft[j]] = [draft[j], draft[i]];
+      schRows();
+    }
+
+    function schDefault() {
+      draft = JSON.parse(JSON.stringify(DEFAULT_SCHED));
+      schRows();
+    }
+
+    function schSave() {
+      store.set('sched', draft.filter(s => (s.l || '').trim()));
+      store.set('sched_done', { d: todayKey(), done: [] });
+      renderSched();
+      toast('💾 よていを保存しました');
+      teacherTab('sched');
+    }
+
+    /* 表示するアプリ */
+    function appsEditorHTML() {
+      const hid = hiddenApps();
+      return `<div class="t-help">この端末で子どもに見せるアプリを選べます（チェックを外すと非表示）。設定はこの端末だけに保存されます。</div>
+        <table class="t-table"><thead><tr><th>表示</th><th>アプリ</th><th>種類</th></tr></thead><tbody>
+        ${APPS.map(a => `<tr><td><input type="checkbox" class="check" data-app="${esc(a.id)}" ${hid.includes(a.id) ? '' : 'checked'} aria-label="${esc(a.title)}を表示"></td><td>${a.emoji} ${esc(a.title)}</td><td>${esc(catOf(a.cat).label)}</td></tr>`).join('')}
+        </tbody></table>`;
+    }
+    document.addEventListener('change', e => {
+      const c = e.target.closest('[data-app]');
+      if (!c) return;
+      let hid = hiddenApps().filter(x => x !== c.dataset.app);
+      if (!c.checked) hid.push(c.dataset.app);
+      store.set('hidden_apps', hid);
+      renderApps();
+    });
+
+    /* きもちの記録 */
+    function feelLogHTML() {
+      const log = store.get('feel_log', []).slice().reverse().slice(0, 60);
+      if (!log.length) return '<div class="t-help">まだ記録がありません。子どもが「いまの きもち」を選ぶと、ここに日時つきで残ります。</div>';
+      const rows = log.map(x => {
+        const f = FEELINGS.find(y => y.id === x.id) || { e: '?', l: x.id };
+        const d = new Date(x.ts);
+        return `<tr><td>${d.getMonth() + 1}/${d.getDate()}（${'日月火水木金土'[d.getDay()]}）</td><td>${d.getHours()}:${String(d.getMinutes()).padStart(2, '0')}</td><td style="font-size:1.5rem">${f.e}</td><td>${f.l}</td></tr>`;
+      }).join('');
+      return `<div class="t-help">「いまの きもち」で選ばれた記録（新しい順・最大60件）です。声かけや面談の参考にどうぞ。</div>
+        <table class="t-table"><thead><tr><th>日付</th><th>時刻</th><th></th><th>きもち</th></tr></thead><tbody>${rows}</tbody></table>
+        <div class="row" style="justify-content:flex-end; margin-top:12px;"><button class="btn btn-sub btn-sm" onclick="clearFeel()">記録を消す</button></div>`;
+    }
+
+    function clearFeel() {
+      if (!confirm('きもちの記録をすべて消します。よろしいですか？')) return;
+      store.set('feel_log', []);
+      renderFeels();
+      $('#feel-msg').hidden = true;
+      teacherTab('feel');
+    }
+
+    /* データ */
+    function dataHTML() {
+      return `<div class="t-help">記録（よてい・シール・すき・設定・きもちの記録など）は、この端末のブラウザだけに保存されています。端末を変えるときは「書き出し」→ 新しい端末で「読み込み」をしてください。</div>
+        <div class="row" style="justify-content:flex-start;">
+          <button class="btn btn-sm" onclick="exportData()">⬇ 書き出し</button>
+          <label class="btn btn-sub btn-sm" style="cursor:pointer;">⬆ 読み込み<input type="file" accept=".json,application/json" onchange="importData(event)" hidden></label>
+          <button class="btn btn-sub btn-sm" onclick="resetAll()" style="margin-left:auto; color:#c0392b;">🗑 すべて消す</button>
+        </div>`;
+    }
+
+    function exportData() {
+      const out = {};
+      for (let i = 0; i < localStorage.length; i++) {
+        const k = localStorage.key(i);
+        if (k.startsWith(PREFIX)) out[k] = localStorage.getItem(k);
+      }
+      const blob = new Blob([JSON.stringify(out, null, 1)], { type: 'application/json' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = `manabiba-data-${todayKey()}.json`;
+      a.click();
+      setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+    }
+
+    function importData(e) {
+      const f = e.target.files[0];
+      if (!f) return;
+      const r = new FileReader();
+      r.onload = () => {
+        try {
+          const obj = JSON.parse(r.result);
+          Object.entries(obj).forEach(([k, v]) => {
+            if (k.startsWith(PREFIX)) localStorage.setItem(k, v);
+          });
+          toast('⬆ 読み込みました。ページを読みなおします');
+          setTimeout(() => location.reload(), 900);
+        } catch (err) {
+          toast('ファイルを読み込めませんでした');
+        }
+      };
+      r.readAsText(f);
+    }
+
+    function resetAll() {
+      if (!confirm('この端末の記録（よてい・シール・すき・設定・きもちの記録）をすべて消します。元にはもどせません。よろしいですか？')) return;
+      Object.keys(localStorage).filter(k => k.startsWith(PREFIX)).forEach(k => localStorage.removeItem(k));
+      location.reload();
+    }
+
+    /* =========================================================
+       きどう
+    ========================================================= */
+    function boot() {
+      $('#site-name').textContent = SITE_NAME;
+      $('#footer-name').textContent = SITE_NAME;
+      document.title = SITE_NAME + '｜とくべつしえん がくしゅうルーム';
+      applySettings();
+      renderGreeting();
+      renderFeels();
+      renderSched();
+      renderApps();
+      renderStickers();
+      renderFT();
+      vtSet(store.get('vt_min', 5));
+      const col = store.get('vt_color', null);
+      if (col) {
+        $('#vt-disc').style.setProperty('--vt', col);
+        $$('#vt-colors .color-dot').forEach(x => x.setAttribute('aria-pressed', x.dataset.c === col));
+      }
+      selectTool(store.get('tool', 'timer'));
+      // 日付がかわったら（ひらいたままの つぎの日）よていを リセット
+      setInterval(() => {
+        renderGreeting();
+        if (getDone().done.length === 0) renderSched();
+      }, 60000);
+    }
+    boot();
+  </script>
+</body>
+
+</html>
