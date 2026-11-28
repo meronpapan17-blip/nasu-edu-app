@@ -4,10 +4,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>わくわく学習｜じぶんの ペースで、たのしく まなぼう</title>
-  <meta name="description" content="わくわく学習は、特別支援学級の子どもたちが自分のペースで安心して学べる学習サイトです。ひらがな中心・読み上げつき・刺激をおさえたデザインで、学習アプリのほか、よてい表・みえるタイマー・気持ちを伝えるカードもそろえています。登録不要・個人情報不要。">
-  <meta name="theme-color" content="#fbf6ec">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='3' y='3' width='58' height='58' rx='18' fill='%23ffc35c' stroke='%234b3b2f' stroke-width='3'/%3E%3Cpath d='M10 28q11-4 22 2v22q-11-6-22-2zM54 28q-11-4-22 2v22q11-6 22-2z' fill='%23fff' stroke='%234b3b2f' stroke-width='3' stroke-linejoin='round'/%3E%3Cpath d='M32 24q3-10 13-10-2 10-13 10zM32 24q-3-9-12-10 2 9 12 10z' fill='%237cc98a' stroke='%234b3b2f' stroke-width='2.5'/%3E%3C/svg%3E">
+  <title>星ラボ｜きみの「できた」が ほしに なる</title>
+  <meta name="description" content="星ラボ（ほしラボ）は、特別支援学級の子どもたちが自分のペースで安心して学べる学習サイトです。ひらがな中心・読み上げつき・刺激をおさえたデザインで、学習アプリのほか、よてい表・みえるタイマー・気持ちを伝えるカード・きょうのめあてをそろえています。がんばると星が集まり、星座が完成します。登録不要・個人情報不要。">
+  <meta name="theme-color" content="#f4f2fb">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='3' y='3' width='58' height='58' rx='18' fill='%234448b8'/%3E%3Cpath d='M26 13h12M28.5 13v12L17 45.5a5 5 0 0 0 4.4 7.5h21.2a5 5 0 0 0 4.4-7.5L35.5 25V13' fill='%23fff' stroke='%2326244a' stroke-width='3' stroke-linejoin='round'/%3E%3Cpath d='M21.6 38h20.8l4.6 7.5a5 5 0 0 1-4.4 7.5H21.4a5 5 0 0 1-4.4-7.5z' fill='%23ffc93c'/%3E%3Cpath d='M48 9l1.6 4.4L54 15l-4.4 1.6L48 21l-1.6-4.4L42 15l4.4-1.6z' fill='%23ffe27a'/%3E%3C/svg%3E">
 
   <!-- フォント（読み込めない環境でも、端末のフォントでそのまま表示されます） -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,27 +21,31 @@
        ・せっていで「もり」「うみ」「よる」「くっきり」に変えられます
     ========================================================= */
     :root {
-      --bg: #fbf6ec;
-      --bg-2: #f3eadb;
+      --bg: #f4f2fb;
+      --bg-2: #e9e5f7;
       --card: #ffffff;
-      --ink: #3d3a33;
-      --ink-2: #6f695c;
-      --line: #eadfca;
-      --accent: #ec9a3c;
+      --ink: #2d2a44;
+      --ink-2: #67637d;
+      --line: #e2dcf2;
+      --accent: #5357d4;
+      --accent-2: #9b6cf0;
       --accent-ink: #ffffff;
-      --good: #4caf86;
-      --soft: #fff3df;
-      --focus: #2f7de1;
-      --sky1: #dff0fa;
-      --sky2: #fdf6e8;
-      --hill1: #d6ecc9;
-      --hill2: #bfe0ae;
-      --hill3: #a6d395;
-      --cloud: #ffffff;
-      --shadow: 0 5px 0 rgba(120, 95, 50, .10), 0 12px 26px rgba(120, 95, 50, .08);
+      --good: #34ad84;
+      --soft: #eeeafd;
+      --gold: #ffc93c;
+      --focus: #ff8a3d;
+      --night1: #171a45;
+      --night2: #2b3080;
+      --night3: #5a5fbd;
+      --hill1: #2a2f78;
+      --hill2: #22266a;
+      --hill3: #1a1d55;
+      --tree: #1d2160;
+      --shadow: 0 5px 0 rgba(70, 60, 150, .09), 0 14px 30px rgba(70, 60, 150, .09);
       --radius: 24px;
       --fs: 1;
       --font: 'Zen Maru Gothic', 'Hiragino Maru Gothic ProN', 'BIZ UDPGothic', 'Meiryo', system-ui, sans-serif;
+      --en: 'Avenir Next', 'Futura', 'Century Gothic', 'Segoe UI', system-ui, sans-serif;
     }
 
     body.theme-mori {
@@ -122,6 +126,25 @@
 
     body.theme-kukkiri .brand-name .k {
       color: #000 !important;
+      background: none !important;
+      -webkit-text-fill-color: #000 !important;
+    }
+
+    body.theme-kukkiri .hero-panel {
+      background: #fff !important;
+      border: 3px solid #000 !important;
+    }
+
+    body.theme-kukkiri .scene .sky-stars,
+    body.theme-kukkiri .scene .shooting {
+      display: none;
+    }
+
+    body.theme-kukkiri {
+      --hill1: #eeeeee;
+      --hill2: #e2e2e2;
+      --hill3: #d6d6d6;
+      --tree: #cccccc;
     }
 
     body.ud {
@@ -2462,6 +2485,583 @@
       }
     }
 
+
+    /* =========================================================
+       星ラボ ブランド
+    ========================================================= */
+    .brand-mark {
+      display: block;
+      width: 56px;
+      height: 56px;
+      flex: none;
+      filter: drop-shadow(0 4px 6px rgba(60, 60, 160, .25));
+    }
+
+    .brand-mark svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .brand-en,
+    .eyebrow,
+    .t-en,
+    .footer-en {
+      display: block;
+      font-family: var(--en);
+      font-weight: 800;
+      letter-spacing: .22em;
+      font-size: .62rem;
+      line-height: 1.2;
+      color: var(--accent);
+      text-transform: uppercase;
+    }
+
+    .brand-name {
+      font-size: 1.75rem;
+      letter-spacing: .08em;
+    }
+
+    .brand-name .k {
+      background: linear-gradient(100deg, var(--accent), var(--accent-2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: var(--accent);
+    }
+
+    .brand-name ruby rt {
+      font-size: .34em;
+      color: var(--ink-2);
+    }
+
+    .sec-title .eyebrow {
+      margin-bottom: 2px;
+    }
+
+    .adults h2 .eyebrow {
+      margin-bottom: 4px;
+    }
+
+    .t-en {
+      color: #ffd36b;
+      opacity: .85;
+    }
+
+    .footer-en {
+      display: inline;
+      margin-left: 10px;
+    }
+
+    @media (max-width: 560px) {
+      .brand-en {
+        display: none;
+      }
+
+      .brand-name {
+        font-size: 1.3rem;
+      }
+    }
+
+    /* ---------- ヒーロー（よぞらの 星ラボ） ---------- */
+    .hero-panel {
+      background: radial-gradient(120% 90% at 85% 0%, #3a3f99 0%, transparent 55%), linear-gradient(180deg, var(--night1) 0%, var(--night2) 58%, var(--night3) 100%);
+      border: 0;
+      padding-bottom: 128px;
+      box-shadow: 0 10px 0 rgba(40, 40, 120, .12), 0 24px 50px rgba(40, 40, 120, .18);
+    }
+
+    .scene .h1 {
+      fill: var(--hill1);
+    }
+
+    .scene .h2 {
+      fill: var(--hill2);
+    }
+
+    .scene .h3 {
+      fill: var(--hill3);
+    }
+
+    .scene .trees path {
+      fill: var(--tree);
+    }
+
+    .scene .sky-stars {
+      fill: #fff;
+    }
+
+    .scene .sky-stars .big {
+      fill: #ffe27a;
+    }
+
+    .scene .tw {
+      animation: twinkle 4.5s ease-in-out infinite alternate;
+    }
+
+    @keyframes twinkle {
+      from {
+        opacity: .25
+      }
+
+      to {
+        opacity: 1
+      }
+    }
+
+    .scene .shooting {
+      opacity: 0;
+      animation: shoot 16s linear infinite;
+      animation-delay: 4s;
+    }
+
+    @keyframes shoot {
+      0% {
+        opacity: 0;
+        transform: translate(180px, 30px) rotate(16deg);
+      }
+
+      2% {
+        opacity: .9;
+      }
+
+      7% {
+        opacity: 0;
+        transform: translate(560px, 140px) rotate(16deg);
+      }
+
+      100% {
+        opacity: 0;
+        transform: translate(560px, 140px) rotate(16deg);
+      }
+    }
+
+    .mascot svg {
+      filter: drop-shadow(0 0 18px rgba(255, 220, 120, .35));
+    }
+
+    .bubble .who {
+      color: var(--accent);
+      font-family: var(--font);
+    }
+
+    .goal-card {
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 12px;
+      padding: 12px 14px;
+      border-radius: 20px;
+      background: var(--card);
+      border: 2px solid var(--line);
+      box-shadow: var(--shadow);
+      font-weight: 900;
+    }
+
+    .goal-card.done {
+      background: linear-gradient(100deg, #fff8dc, var(--card));
+      border-color: #f2d27a;
+    }
+
+    .goal-label {
+      display: inline-flex;
+      align-items: center;
+      gap: .35em;
+      color: var(--ink-2);
+      font-size: .9rem;
+    }
+
+    .goal-label .icon-box {
+      width: 30px;
+      height: 30px;
+    }
+
+    .goal-main {
+      display: inline-flex;
+      align-items: center;
+      gap: .45em;
+      font-size: 1.15rem;
+      flex: 1 1 200px;
+      line-height: 1.4;
+      word-break: keep-all;
+      overflow-wrap: anywhere;
+    }
+
+    .goal-main .icon-box {
+      width: 44px;
+      height: 44px;
+    }
+
+    .goal-done {
+      display: inline-flex;
+      align-items: center;
+      gap: .3em;
+      color: var(--good);
+    }
+
+    .goal-done .icon-box {
+      width: 32px;
+      height: 32px;
+    }
+
+    .goal-change {
+      border: 0;
+      background: none;
+      color: var(--ink-2);
+      font-weight: 900;
+      text-decoration: underline;
+      font-size: .85rem;
+      padding: 6px;
+    }
+
+    .today-stk {
+      background: rgba(255, 255, 255, .12);
+      border: 2px solid rgba(255, 255, 255, .22);
+      color: #fff;
+    }
+
+    .ts-label {
+      display: inline-flex;
+      align-items: center;
+      gap: .35em;
+    }
+
+    .ts-label .icon-box {
+      width: 26px;
+      height: 26px;
+    }
+
+    .today-stk .none {
+      color: rgba(255, 255, 255, .8);
+    }
+
+    .today-stk .mini-stk {
+      width: 30px;
+      height: 30px;
+      filter: drop-shadow(0 0 6px rgba(255, 220, 100, .55));
+    }
+
+    .today-stk .mini-stk.new {
+      animation: pop .6s cubic-bezier(.3, 1.6, .6, 1);
+    }
+
+    body.theme-kukkiri .today-stk {
+      background: #fff;
+      color: #000;
+      border-color: #000;
+    }
+
+    body.theme-kukkiri .today-stk .none {
+      color: #000;
+    }
+
+    /* ---------- セクション見出し ---------- */
+    .sec-title .icon-box {
+      background: linear-gradient(160deg, var(--card), var(--soft));
+    }
+
+    .nav-tile .icon-box {
+      background: linear-gradient(160deg, var(--soft), var(--card));
+    }
+
+    .app::before {
+      background: linear-gradient(90deg, var(--c), color-mix(in srgb, var(--c) 60%, #fff));
+    }
+
+    /* ---------- せいざ ノート ---------- */
+    .star-note {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 18px 20px 16px;
+      border-radius: 26px;
+      background: radial-gradient(120% 100% at 80% 0%, #3a3f99, transparent 60%), linear-gradient(180deg, var(--night1), var(--night2));
+      color: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .sn-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-weight: 900;
+    }
+
+    .sn-name {
+      font-size: 1.4rem;
+    }
+
+    .sn-count {
+      font-family: var(--en);
+      font-size: 1.2rem;
+      color: #ffe27a;
+    }
+
+    .sn-sky {
+      display: block;
+      width: 100%;
+      max-height: 340px;
+      height: auto;
+      margin: 6px 0;
+    }
+
+    .sn-sky .bg-dots circle {
+      fill: #fff;
+      opacity: .35;
+    }
+
+    .sn-sky .lines line,
+    .sn-chip .lines line {
+      stroke: rgba(255, 255, 255, .18);
+      stroke-width: .7;
+      stroke-dasharray: 1.5 1.5;
+    }
+
+    .sn-sky .lines line.on,
+    .sn-chip .lines line.on {
+      stroke: #ffe9a6;
+      stroke-width: .9;
+      stroke-dasharray: none;
+    }
+
+    .st.off {
+      fill: rgba(255, 255, 255, .35);
+    }
+
+    .st.on path {
+      fill: #ffd34d;
+      stroke: #fff6cf;
+      stroke-width: 4;
+      filter: drop-shadow(0 0 1.5px #ffe27a);
+    }
+
+    .st.on .glow {
+      fill: #ffe27a;
+      opacity: .25;
+    }
+
+    .sn-msg {
+      text-align: center;
+      font-weight: 700;
+      font-size: .95rem;
+      opacity: .9;
+    }
+
+    .sn-done-h {
+      text-align: center;
+      font-weight: 900;
+      margin: 16px 0 8px;
+    }
+
+    .sn-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .sn-chip {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      width: 150px;
+      padding: 8px;
+      border-radius: 18px;
+      background: linear-gradient(180deg, var(--night1), var(--night2));
+      color: #fff;
+      font-weight: 900;
+      font-size: .85rem;
+    }
+
+    .sn-chip svg {
+      width: 100%;
+      height: auto;
+    }
+
+    /* ---------- よてい（おおきく みる） ---------- */
+    .sched-full {
+      position: fixed;
+      inset: 0;
+      z-index: 86;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      padding: 20px clamp(16px, 4vw, 48px);
+      background: var(--bg);
+    }
+
+    .sf-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .sf-title {
+      font-size: clamp(1.2rem, 3vw, 2rem);
+      font-weight: 900;
+    }
+
+    .sf-main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(12px, 3vw, 40px);
+      flex-wrap: wrap;
+    }
+
+    .sf-now,
+    .sf-next,
+    .sf-all {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      padding: 40px 24px 24px;
+      border-radius: 36px;
+      background: var(--card);
+      border: 3px solid var(--line);
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .sf-now {
+      border: 5px solid var(--accent);
+      background: var(--soft);
+      min-width: min(46vw, 460px);
+    }
+
+    .sf-now .icon-box {
+      width: min(28vmin, 260px);
+      height: min(28vmin, 260px);
+    }
+
+    .sf-now b {
+      font-size: clamp(2rem, 6vw, 4rem);
+      line-height: 1.25;
+    }
+
+    .sf-next {
+      opacity: .85;
+      min-width: min(28vw, 280px);
+    }
+
+    .sf-next .icon-box {
+      width: min(15vmin, 140px);
+      height: min(15vmin, 140px);
+    }
+
+    .sf-next b {
+      font-size: clamp(1.4rem, 3.5vw, 2.4rem);
+    }
+
+    .sf-time {
+      font-weight: 900;
+      color: var(--ink-2);
+      font-size: clamp(1rem, 2vw, 1.5rem);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .sf-tag {
+      position: absolute;
+      top: -18px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 2px 22px;
+      border-radius: 99px;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 900;
+      font-size: clamp(1rem, 2vw, 1.4rem);
+    }
+
+    .sf-next .sf-tag {
+      background: var(--card);
+      color: var(--ink);
+      border: 3px solid var(--line);
+    }
+
+    .sf-arrow svg {
+      width: clamp(40px, 6vw, 80px);
+      height: clamp(40px, 6vw, 80px);
+      color: var(--ink-2);
+    }
+
+    .sf-now .btn {
+      font-size: clamp(1.1rem, 2.4vw, 1.6rem);
+      min-height: 64px;
+      padding: .5em 1.6em;
+    }
+
+    .sf-all .icon-box {
+      width: min(30vmin, 240px);
+      height: min(30vmin, 240px);
+    }
+
+    .sf-all b {
+      font-size: clamp(1.6rem, 4vw, 2.8rem);
+    }
+
+    .sf-strip {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .sf-chip {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 86px;
+      padding: 6px 4px;
+      border-radius: 16px;
+      background: var(--card);
+      border: 2px solid var(--line);
+      font-weight: 900;
+      font-size: .78rem;
+      line-height: 1.3;
+      text-align: center;
+    }
+
+    .sf-chip .icon-box {
+      width: 40px;
+      height: 40px;
+    }
+
+    .sf-chip.done {
+      opacity: .4;
+    }
+
+    .sf-chip.now {
+      border-color: var(--accent);
+      background: var(--soft);
+    }
+
+    @media (max-width: 700px) {
+      .sf-arrow {
+        transform: rotate(90deg);
+      }
+
+      .sf-now {
+        min-width: 80vw;
+      }
+    }
+
+    .sched-bar .btn-sm {
+      min-height: 42px;
+    }
+
+    @media print {
+      body.printing .sched-bar {
+        display: none !important;
+      }
+    }
+
   </style>
 </head>
 
@@ -2473,20 +3073,9 @@
   ===================================================== -->
   <header class="site-header">
     <div class="wrap">
-      <a class="brand" href="./" aria-label="わくわく学習 トップへ">
-        <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true">
-          <g stroke="#4b3b2f" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round">
-            <rect x="3" y="3" width="58" height="58" rx="18" fill="#ffc35c" />
-            <path d="M32 30v-6" fill="none" />
-            <path d="M32 24q-3-9-12-10 2 9 12 10z" fill="#8fd19e" />
-            <path d="M32 24q3-10 13-10-2 10-13 10z" fill="#68b97f" />
-            <path d="M10 28q11-4 22 2v22q-11-6-22-2z" fill="#fff" />
-            <path d="M54 28q-11-4-22 2v22q11-6 22-2z" fill="#fff" />
-            <path d="M15 35q6-1 11 1.5M15 41q6-1 11 1.5M38 36.5q5-2.5 11-1.5M38 42.5q5-2.5 11-1.5" stroke="#d8cdb9" stroke-width="2" fill="none" />
-          </g>
-          <path d="M51 7l1.6 4 4 1.6-4 1.6-1.6 4-1.6-4-4-1.6 4-1.6z" fill="#fff" />
-        </svg>
-        <span><span class="brand-name" id="site-name">わくわく学習</span><span class="brand-sub" id="site-sub">じぶんの ペースで、たのしく まなぼう</span></span>
+      <a class="brand" href="./" aria-label="星ラボ トップへ">
+        <span class="brand-mark" id="brand-mark"></span>
+        <span><span class="brand-en">HOSHI LAB</span><span class="brand-name" id="site-name">星ラボ</span><span class="brand-sub" id="site-sub">きみの「できた」が ほしに なる</span></span>
       </a>
       <div class="clock-chip" aria-label="いまの じかん" role="timer">
         <svg viewBox="0 0 40 40" aria-hidden="true">
@@ -2515,7 +3104,7 @@
       <div class="wrap">
         <div class="t-area-box">
           <div class="t-area-head">
-            <span class="t-badge"><span data-ui="key"></span>先生用</span>
+            <span class="t-badge"><span data-ui="key"></span>先生用</span><span class="t-en">STAFF ROOM</span>
             <h2 id="ta-h">業務アプリ</h2>
             <p>授業準備や校務に使うアプリです。</p>
           </div>
@@ -2530,49 +3119,52 @@
     <section class="hero">
       <div class="wrap">
         <div class="hero-panel">
-          <svg class="scene" viewBox="0 0 1200 320" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
-            <g class="day">
-              <circle cx="1100" cy="70" r="40" fill="#ffe9a8" opacity=".9" />
-              <circle cx="1100" cy="70" r="58" fill="#ffe9a8" opacity=".35" />
+          <svg class="scene" id="scene" viewBox="0 0 1200 380" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+            <defs>
+              <linearGradient id="shootg" x1="0" x2="1">
+                <stop offset="0" stop-color="#fff" stop-opacity="0" />
+                <stop offset="1" stop-color="#fff" />
+              </linearGradient>
+              <radialGradient id="moonglow">
+                <stop offset="0" stop-color="#fff6c8" stop-opacity=".5" />
+                <stop offset="1" stop-color="#fff6c8" stop-opacity="0" />
+              </radialGradient>
+            </defs>
+            <g id="scene-stars" class="sky-stars"></g>
+            <g class="shooting"><path d="M0 0h110" stroke="url(#shootg)" stroke-width="2.6" stroke-linecap="round" /></g>
+            <circle cx="716" cy="206" r="56" fill="url(#moonglow)" />
+            <path d="M724 180a27 27 0 1 0 19 43A23 23 0 0 1 724 180z" fill="#ffe7a0" />
+            <g id="scene-planet"></g>
+            <path class="h1" d="M0 262Q160 206 340 240T700 224T1000 206T1200 224V380H0z" />
+            <g class="obs" transform="translate(862 194) scale(.94)">
+              <path d="M60 42l40-32" stroke="#151845" stroke-width="13" stroke-linecap="round" />
+              <path d="M60 42l40-32" stroke="#9aa0f0" stroke-width="7.5" stroke-linecap="round" />
+              <path d="M14 54a46 46 0 0 1 92 0z" fill="#e8e6ff" stroke="#151845" stroke-width="3" />
+              <path d="M54 9.4h12V54H54z" fill="#2e3184" />
+              <rect x="8" y="54" width="104" height="30" rx="3" fill="#c9ccf5" stroke="#151845" stroke-width="3" />
+              <rect x="51" y="62" width="18" height="22" rx="3" fill="#6c72d8" stroke="#151845" stroke-width="2.4" />
+              <rect x="20" y="61" width="16" height="11" rx="2" fill="#ffd36b" stroke="#151845" stroke-width="2.4" />
+              <rect x="84" y="61" width="16" height="11" rx="2" fill="#ffd36b" stroke="#151845" stroke-width="2.4" />
             </g>
-            <g class="night">
-              <circle cx="1100" cy="70" r="30" fill="#f3e7b8" />
-              <circle cx="1114" cy="60" r="27" style="fill:var(--sky1)" />
-              <g fill="#f3e7b8">
-                <circle cx="120" cy="40" r="2.5" />
-                <circle cx="300" cy="90" r="2" />
-                <circle cx="520" cy="30" r="2.5" />
-                <circle cx="760" cy="80" r="2" />
-                <circle cx="940" cy="30" r="2.5" />
-                <circle cx="660" cy="140" r="1.8" />
-              </g>
+            <path class="h2" d="M0 300Q220 258 460 290T880 274T1200 282V380H0z" />
+            <g class="trees">
+              <path d="M60 292l14-34 14 34z" /><path d="M84 294l11-26 11 26z" />
+              <path d="M1000 288l12-30 12 30z" /><path d="M1022 290l9-22 9 22z" /><path d="M560 300l10-24 10 24z" />
             </g>
-            <g class="drift">
-              <path class="cl" transform="translate(60 20)" d="M20 60a22 22 0 0 1 30-28 30 30 0 0 1 56 6 20 20 0 0 1 4 40H22a18 18 0 0 1-2-18z" />
-              <path class="cl" transform="translate(760 6) scale(.8)" d="M20 60a22 22 0 0 1 30-28 30 30 0 0 1 56 6 20 20 0 0 1 4 40H22a18 18 0 0 1-2-18z" />
-              <path class="cl" transform="translate(470 80) scale(.55)" d="M20 60a22 22 0 0 1 30-28 30 30 0 0 1 56 6 20 20 0 0 1 4 40H22a18 18 0 0 1-2-18z" />
-            </g>
-            <path class="h1" d="M0 232Q150 170 320 210T640 200T960 186T1200 204V320H0z" />
-            <path class="h2" d="M0 262Q200 222 420 252T820 240T1200 246V320H0z" />
-            <path class="h3" d="M0 290Q260 268 560 284T1200 280V320H0z" />
-            <g fill="#fff" opacity=".7">
-              <circle cx="180" cy="300" r="4" />
-              <circle cx="420" cy="292" r="3.5" />
-              <circle cx="700" cy="298" r="4" />
-              <circle cx="980" cy="290" r="3.5" />
-            </g>
+            <path class="h3" d="M0 340Q280 316 600 330T1200 324V380H0z" />
           </svg>
 
           <div class="hero-grid">
             <div class="greet">
-              <button class="mascot" id="mascot" aria-label="わくまると おはなし する"></button>
+              <button class="mascot" id="mascot" aria-label="キラボと おはなし する"></button>
               <div class="bubble" id="bubble" aria-live="polite">
-                <span class="who" id="mascot-name">わくまる</span>
+                <span class="who" id="mascot-name">キラボ</span>
                 <b id="greet-title">こんにちは！</b>
                 <span id="greet-text">きょうも じぶんの ペースで やってみよう。</span>
               </div>
-              <div class="today-stk" aria-label="きょう もらった シール">
-                <span>きょうの シール</span>
+              <div class="goal-card" id="goal-card" aria-live="polite"></div>
+              <div class="today-stk" aria-label="きょう あつめた ほし">
+                <span class="ts-label"><span class="icon-box" data-ic="star"></span>きょうの ほし</span>
                 <span class="row-stk" id="today-stk"></span>
               </div>
             </div>
@@ -2588,8 +3180,8 @@
         <nav class="quick" aria-label="ページの なか">
           <a class="nav-tile" href="#schedule"><span class="icon-box" data-ic="calendar"></span><span>よてい<small>きょうの ながれ</small></span></a>
           <a class="nav-tile" href="#jisyu" id="nav-jisyu"><span class="icon-box" data-ic="pencil"></span><span>じしゅう<small>じぶんで れんしゅう</small></span></a>
-          <a class="nav-tile" href="#apps"><span class="icon-box" data-ic="bag"></span><span>アプリ<small>えらんで まなぶ</small></span></a>
-          <a class="nav-tile" href="#tools"><span class="icon-box" data-ic="toolbox"></span><span>どうぐばこ<small>タイマー など</small></span></a>
+          <a class="nav-tile" href="#apps"><span class="icon-box" data-ic="rocket"></span><span>アプリ<small>えらんで まなぶ</small></span></a>
+          <a class="nav-tile" href="#tools"><span class="icon-box" data-ic="telescope"></span><span>ラボの どうぐ<small>タイマー・せいざ</small></span></a>
         </nav>
       </div>
     </section>
@@ -2600,9 +3192,10 @@
     <section class="section" id="schedule">
       <div class="wrap">
         <div class="sec-head">
-          <h2 class="sec-title"><span class="icon-box" data-ic="calendar"></span>きょうの よてい</h2>
+          <h2 class="sec-title"><span class="icon-box" data-ic="calendar"></span><span><small class="eyebrow">TODAY'S PLAN</small>きょうの よてい</span></h2>
           <div class="sched-bar"><span id="sched-count">0 / 0</span>
             <div class="progress" aria-hidden="true"><i id="sched-progress" style="width:0"></i></div>
+            <button class="btn btn-sub btn-sm" id="sched-big"><span data-ui="expand"></span>おおきく みる</button>
           </div>
         </div>
         <p class="sec-lead">おわったら カードを タッチしてね。</p>
@@ -2620,7 +3213,7 @@
       <div class="wrap">
         <div class="panel jisyu">
           <div class="sec-head">
-            <h2 class="sec-title"><span class="icon-box" data-ic="pencil"></span>じしゅう コーナー</h2>
+            <h2 class="sec-title"><span class="icon-box" data-ic="pencil"></span><span><small class="eyebrow">SELF STUDY</small>じしゅう ルーム</span></h2>
             <p class="sec-lead">じぶんで えらんで、もくもく れんしゅう しよう。</p>
             <button class="btn btn-sub btn-sm" id="jisyu-all" style="margin-left:auto;">ぜんぶ みる<span data-ui="arrow"></span></button>
           </div>
@@ -2639,7 +3232,7 @@
     <section class="section" id="apps">
       <div class="wrap">
         <div class="sec-head">
-          <h2 class="sec-title"><span class="icon-box" data-ic="bag"></span>アプリを えらぼう</h2>
+          <h2 class="sec-title"><span class="icon-box" data-ic="rocket"></span><span><small class="eyebrow">LAB APPS</small>アプリを えらぼう</span></h2>
         </div>
         <div class="tabs" id="tabs" role="tablist" aria-label="アプリの しゅるい"></div>
         <div class="shelf" id="recent-shelf" hidden><span class="shelf-label"><span data-ui="recent"></span>さいきん つかった</span><span id="recent-row" class="shelf" style="margin:0"></span></div>
@@ -2654,7 +3247,7 @@
     <section class="section" id="tools">
       <div class="wrap">
         <div class="sec-head">
-          <h2 class="sec-title"><span class="icon-box" data-ic="toolbox"></span>どうぐばこ</h2>
+          <h2 class="sec-title"><span class="icon-box" data-ic="telescope"></span><span><small class="eyebrow">LAB TOOLS</small>ラボの どうぐ</span></h2>
           <p class="sec-lead">こまったときや、じかんを みたいときに つかおう。</p>
         </div>
         <div class="panel tools">
@@ -2663,7 +3256,7 @@
             <button class="tool-tab" role="tab" data-tool="breath" aria-selected="false"><span class="icon-box" data-ic="breath"></span>しん<br>こきゅう</button>
             <button class="tool-tab" role="tab" data-tool="firstthen" aria-selected="false"><span class="icon-box" data-ic="firstthen"></span>まず<br>→ つぎ</button>
             <button class="tool-tab" role="tab" data-tool="tell" aria-selected="false"><span class="icon-box" data-ic="hand"></span>つたえる<br>カード</button>
-            <button class="tool-tab" role="tab" data-tool="stickers" aria-selected="false"><span class="icon-box" data-ic="stickerbook"></span>シール<br>ちょう</button>
+            <button class="tool-tab" role="tab" data-tool="stars" aria-selected="false"><span class="icon-box" data-ic="constellation"></span>せいざ<br>ノート</button>
           </div>
 
           <!-- 1. みえる タイマー -->
@@ -2741,14 +3334,18 @@
             <div class="tell-grid" id="tell-grid"></div>
           </div>
 
-          <!-- 5. シールちょう -->
-          <div class="tool" id="tool-stickers" role="tabpanel" hidden>
-            <div class="stk-head">
-              <span id="stk-info">シール 0まい</span>
-              <span class="books" id="stk-books"></span>
+          <!-- 5. せいざ ノート（ごほうび） -->
+          <div class="tool" id="tool-stars" role="tabpanel" hidden>
+            <div class="star-note">
+              <div class="sn-head">
+                <span class="sn-name" id="sn-name">カシオペヤざ</span>
+                <span class="sn-count" id="sn-count">0 / 5</span>
+              </div>
+              <svg class="sn-sky" id="sn-sky" viewBox="0 0 100 72" aria-hidden="true"></svg>
+              <p class="sn-msg" id="sn-msg"></p>
             </div>
-            <div class="stk-book" id="stk-book"></div>
-            <p class="note" style="text-align:center; margin-top:14px;">アプリを ひらく・よていが おわる・タイマーや しんこきゅうを さいごまで やると、シールが もらえるよ（1にち <span id="stk-cap">12</span>まいまで）。</p>
+            <div class="sn-done" id="sn-done"></div>
+            <p class="note" style="text-align:center; margin-top:14px;">アプリを ひらく・よていや めあてが できる・タイマーや しんこきゅうを さいごまで やると、ほしが ふえるよ（1にち <span id="stk-cap">12</span>こまで）。ほしが あつまると せいざが かんせい！</p>
           </div>
         </div>
       </div>
@@ -2760,8 +3357,8 @@
     <section class="section" id="for-adults">
       <div class="wrap">
         <div class="panel adults">
-          <h2>保護者の方・先生方へ</h2>
-          <p>「わくわく学習」は、特別支援学級の子どもたちが「自分で選んで、見通しをもって、安心して」学べるようにつくった学習サイトです。教室での支援の経験をもとに、アプリを少しずつ増やしていきます。</p>
+          <h2><small class="eyebrow">ABOUT HOSHI LAB</small>星ラボについて（保護者の方・先生方へ）</h2>
+          <p>「星ラボ」は、特別支援学級の子どもたちが「自分で選んで、見通しをもって、安心して」学べるようにつくった学習サイトです。名前には「一人ひとりの『できた』が、星のように光る研究所」という願いを込めました。教室での支援の経験をもとに、アプリを少しずつ増やしていきます。</p>
           <div class="principles">
             <div class="principle"><span class="icon-box" data-ic="kotoba"></span>
               <h3>ひらがな中心・読み上げつき</h3>
@@ -2773,15 +3370,19 @@
             </div>
             <div class="principle"><span class="icon-box" data-ic="calendar"></span>
               <h3>見通しをもてる道具</h3>
-              <p>よてい・みえるタイマー・まず→つぎボードで、「いま何をして、次に何があるか」を目で確かめられます。</p>
+              <p>よてい（全画面表示・印刷つき）・みえるタイマー・まず→つぎボードで、「いま何をして、次に何があるか」を目で確かめられます。</p>
             </div>
             <div class="principle"><span class="icon-box" data-ic="talk"></span>
               <h3>気持ちを伝える支援</h3>
               <p>「いまのきもち」と「つたえるカード」で、言葉にしにくい気持ちや要求を、選ぶだけで伝えられます。</p>
             </div>
+            <div class="principle"><span class="icon-box" data-ic="target"></span>
+              <h3>めあて と 星座のごほうび</h3>
+              <p>「きょうのめあて」を自分で選び、できたら星がもらえます。星が集まると星座が完成。競争ではなく、自分の積み重ねが見える仕組みです。</p>
+            </div>
             <div class="principle"><span class="icon-box" data-ic="sliders"></span>
               <h3>一人ひとりに合わせて調整</h3>
-              <p>文字の大きさ・配色（白黒くっきり含む）・UDフォントを変更できます。先生用パネルで、よてい・カード・表示するアプリを端末ごとに設定できます。</p>
+              <p>文字の大きさ・配色（白黒くっきり含む）・UDフォントを変更できます。先生用パネルで、よてい・めあて・カード・表示するアプリを端末ごとに設定できます。</p>
             </div>
             <div class="principle"><span class="icon-box" data-ic="lock"></span>
               <h3>登録・個人情報は不要</h3>
@@ -2795,7 +3396,7 @@
 
   <footer class="footer">
     <div class="wrap">
-      <span class="footer-brand"><span class="icon-box" style="width:36px;height:36px" id="footer-mascot"></span>© <span id="year">2026</span> <span id="footer-name">わくわく学習</span></span>
+      <span class="footer-brand"><span class="icon-box" style="width:40px;height:40px" id="footer-mascot"></span>© <span id="year">2026</span> <span id="footer-name">星ラボ</span><span class="footer-en">HOSHI LAB</span></span>
       <button class="btn btn-sub btn-sm hold" id="teacher-open"><span data-ui="key"></span>せんせい・おうちのかた（ながおし）</button>
     </div>
   </footer>
@@ -2812,7 +3413,7 @@
       </div>
       <div class="set-row"><span>いろ<small>みやすい いろを えらんでね</small></span>
         <div class="themes" id="set-theme">
-          <button class="theme-btn" data-v="hidamari"><i style="background:linear-gradient(#dff0fa,#fbf6ec)"></i>ひだまり</button>
+          <button class="theme-btn" data-v="hoshizora"><i style="background:linear-gradient(#2d3282,#f4f2fb)"></i>ほしぞら</button>
           <button class="theme-btn" data-v="mori"><i style="background:#e2eedd"></i>もり</button>
           <button class="theme-btn" data-v="umi"><i style="background:#dfeaf3"></i>うみ</button>
           <button class="theme-btn" data-v="yoru"><i style="background:#2b303b"></i>よる</button>
@@ -2825,7 +3426,7 @@
       <div class="set-row"><span>よみあげの はやさ</span>
         <div class="seg" id="set-rate"><button data-v="0.7">ゆっくり</button><button data-v="0.9">ふつう</button><button data-v="1.1">はやめ</button></div>
       </div>
-      <div class="set-row"><span>おと<small>タイマーや シールの おと</small></span>
+      <div class="set-row"><span>おと<small>タイマーや ほしの おと</small></span>
         <div class="seg" id="set-sfx"><button data-v="1">ならす</button><button data-v="0">ならさない</button></div>
       </div>
       <div class="set-row"><span>しずかモード<small>うごきを とめて、おちついた がめんに するよ</small></span>
@@ -2862,6 +3463,7 @@
       <h2 id="t-h"><span data-ui="key"></span>先生・保護者用パネル</h2>
       <div class="t-tabs" role="tablist">
         <button data-t="sched" aria-selected="true"><span data-ui="edit"></span>よてい</button>
+        <button data-t="goal" aria-selected="false"><span data-ui="edit"></span>めあて</button>
         <button data-t="tell" aria-selected="false"><span data-ui="edit"></span>つたえるカード</button>
         <button data-t="apps" aria-selected="false"><span data-ui="home"></span>表示するアプリ</button>
         <button data-t="feel" aria-selected="false"><span data-ui="chart"></span>きもちの記録</button>
@@ -2880,16 +3482,26 @@
     </div>
   </div>
 
+  <!-- よてい（おおきく みる） -->
+  <div class="sched-full" id="sched-full" hidden role="dialog" aria-modal="true" aria-label="きょうの よてい">
+    <div class="sf-top">
+      <span class="sf-title" id="sf-title">きょうの よてい</span>
+      <button class="btn btn-sub" id="sf-close"><span data-ui="close"></span>とじる</button>
+    </div>
+    <div class="sf-main" id="sf-main"></div>
+    <div class="sf-strip" id="sf-strip"></div>
+  </div>
+
   <div id="toasts" aria-live="polite"></div>
 
   <script>
     /* =========================================================
        ■ サイトの名前
     ========================================================= */
-    const SITE_NAME = 'わくわく学習';
-    const SITE_RUBY = { '学習': 'がくしゅう' }; // 漢字の ふりがな
-    const SITE_SUB = 'じぶんの ペースで、たのしく まなぼう';
-    const MASCOT_NAME = 'わくまる';
+    const SITE_NAME = '星ラボ';
+    const SITE_RUBY = { '星': 'ほし' }; // 漢字の ふりがな
+    const SITE_SUB = 'きみの「できた」が ほしに なる';
+    const MASCOT_NAME = 'キラボ';
 
     /* =========================================================
        ■ アプリの しゅるい（タブ）
@@ -2924,8 +3536,8 @@
            // yomi: 'とけいを よもう。', ← 読み上げの文を変えたいときだけ
          },
 
-       ・特別支援のアプリは「tokubetusienn」、自習用のアプリは「zisyuuyou」
-         フォルダの中に作る想定です
+       ・特別支援のアプリは「tokubetusienn」、自習用は「zisyuuyou」、
+         算数は「sannsuu」フォルダの中に作る想定です
        ・自習用は cat: 'jisyu' にすると「じしゅう コーナー」にも並びます
        ・つかえるイラストの名前（一部）：
          pencil coin kazu kotoba clock house talk dice popcorn calendar keyboard
@@ -2950,6 +3562,16 @@
         title: 'じかんわりと よてい',
         desc: 'きょうの じかんわりや よていを かくにん しよう！',
         href: './tokubetusienn/zikantoyotei/index.html',
+        badge: 'new',
+      },
+      {
+        id: 'kakezan',
+        cat: 'kazu',
+        icon: 'kuku',
+        title: 'かけざん',
+        desc: 'かけざん（くく）の れんしゅうを しよう！',
+        yomi: 'かけざん。くくの れんしゅうを しよう！',
+        href: './sannsuu/kakezann/index.html',
         badge: 'new',
       },
       {
@@ -3030,12 +3652,34 @@
       ['bus', 'バス'], ['clock', 'とけい'], ['calendar', 'カレンダー'], ['house', 'いえ'], ['blocks', 'ブロック'], ['puzzle', 'パズル'],
       ['dice', 'ゲーム'], ['coin', 'おかね'], ['sofa', 'やすむ'], ['toilet', 'トイレ'], ['soap', 'てあらい'], ['cup', 'みず'],
       ['hand', 'てつだって'], ['question', 'わからない'], ['earmuff', 'うるさい'], ['thermo', 'ぐあい'], ['talk', 'はなす'], ['heart', 'すき'],
-      ['star', 'ほし'], ['check', 'できた'], ['popcorn', 'おやつ'], ['toolbox', 'どうぐ'], ['apple', 'くだもの'], ['car', 'くるま'],
+      ['star', 'ほし'], ['check', 'できた'], ['popcorn', 'おやつ'], ['kuku', 'かけざん'], ['toolbox', 'どうぐ'], ['apple', 'くだもの'], ['car', 'くるま'],
+      ['ear', 'きく'], ['target', 'めあて'], ['telescope', 'かんさつ'], ['flask', 'じっけん'], ['rocket', 'ロケット'], ['planet', 'うちゅう'],
+      ['moon', 'つき'], ['sparkle', 'きらきら'], ['observatory', 'ラボ'], ['month', 'よていひょう'],
     ];
 
-    const STICKERS = ['star', 'heart', 'apple', 'strawberry', 'flower', 'clover', 'rainbow', 'balloon', 'cat', 'dog', 'rabbit', 'bear', 'chick', 'fish', 'car', 'onigiri', 'sun', 'music', 'ball', 'popcorn'];
-    const BOOK_SIZE = 20; // シールちょう 1さつの まいすう
-    const DAILY_CAP = 12; // 1にちに もらえる シールの じょうげん
+    /* =========================================================
+       ■ きょうの めあて（さいしょの形。先生用パネルで変えられます）
+    ========================================================= */
+    const DEFAULT_GOALS = [
+      { ic: 'check',    l: 'さいごまで がんばる' },
+      { ic: 'hand',     l: 'てを あげて はなす' },
+      { ic: 'ear',      l: 'はなしを しずかに きく' },
+      { ic: 'clock',    l: 'じかんを まもる' },
+      { ic: 'talk',     l: '「おねがいします」と いう' },
+      { ic: 'heart',    l: 'ともだちに やさしく する' },
+      { ic: 'broom',    l: 'かたづけを する' },
+      { ic: 'question', l: 'こまったら つたえる' },
+    ];
+
+    /* ごほうびの せいざ（ほしが あつまると かんせい）
+       pts … ほしの いち（よこ100×たて72）、lines … つなぐ ほしの ばんごう */
+    const CONSTELLATIONS = [
+      { name: 'カシオペヤざ',   pts: [[10, 30], [30, 56], [50, 36], [70, 58], [90, 24]], lines: [[0, 1], [1, 2], [2, 3], [3, 4]] },
+      { name: 'ほくと しちせい', pts: [[8, 22], [24, 28], [38, 33], [52, 40], [56, 60], [82, 63], [88, 40]], lines: [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 3]] },
+      { name: 'はくちょうざ',   pts: [[50, 8], [50, 34], [50, 64], [18, 26], [82, 42]], lines: [[0, 1], [1, 2], [3, 1], [1, 4]] },
+      { name: 'オリオンざ',     pts: [[28, 10], [72, 14], [42, 38], [50, 36], [58, 34], [26, 64], [74, 62]], lines: [[0, 1], [0, 2], [1, 4], [2, 3], [3, 4], [2, 5], [4, 6]] },
+    ];
+    const DAILY_CAP = 12; // 1にちに もらえる ほしの じょうげん
 
     /* =========================================================
        イラスト（すべてコードで描いています）
@@ -3246,38 +3890,6 @@
         ${dots(29, 26, 38, 2.4)}<path d="M29 33q3 3 6 0" fill="none" stroke-width="2"/>${cheeks(32, 21, 43, 2.4)}`,
     };
 
-    /* キャラクター「わくまる」（きもちで かおが かわります） */
-    function mascotSVG(mood = 'happy') {
-      const eyes = {
-        happy: '<path d="M43 63q5-6 10 0M67 63q5-6 10 0" stroke="#5a4632" stroke-width="4" fill="none" stroke-linecap="round"/>',
-        calm: '<g fill="#5a4632"><circle cx="48" cy="62" r="4"/><circle cx="72" cy="62" r="4"/></g><g fill="#fff"><circle cx="49.5" cy="60.5" r="1.4"/><circle cx="73.5" cy="60.5" r="1.4"/></g>',
-        care: '<path d="M43 61q5 4 10 0M67 61q5 4 10 0" stroke="#5a4632" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M42 52l9-3M78 52l-9-3" stroke="#5a4632" stroke-width="3" stroke-linecap="round"/>',
-        talk: '<g fill="#5a4632"><circle cx="48" cy="62" r="4"/><circle cx="72" cy="62" r="4"/></g><g fill="#fff"><circle cx="49.5" cy="60.5" r="1.4"/><circle cx="73.5" cy="60.5" r="1.4"/></g>',
-        joy: '<path d="M43 63q5-6 10 0M67 63q5-6 10 0" stroke="#5a4632" stroke-width="4" fill="none" stroke-linecap="round"/>',
-      } [mood] || '';
-      const mouth = {
-        happy: '<path d="M53 76q7 7 14 0" stroke="#5a4632" stroke-width="4" fill="none" stroke-linecap="round"/>',
-        calm: '<path d="M54 76q6 5 12 0" stroke="#5a4632" stroke-width="4" fill="none" stroke-linecap="round"/>',
-        care: '<path d="M55 77q5 3 10 0" stroke="#5a4632" stroke-width="3.6" fill="none" stroke-linecap="round"/>',
-        talk: '<ellipse cx="60" cy="77" rx="6" ry="5" fill="#8a3b2e"/>',
-        joy: '<path d="M50 72h20q-1 12-10 12t-10-12z" fill="#8a3b2e" stroke="#5a4632" stroke-width="2.4" stroke-linejoin="round"/><path d="M55 80q5-3 10 0q-2 3.5-5 3.5t-5-3.5z" fill="#ff8a7a"/>',
-      } [mood] || '';
-      const extra = mood === 'care' ? '<path d="M96 30c-5-3-8-5-8-8.5a3.6 3.6 0 0 1 8-1.2 3.6 3.6 0 0 1 8 1.2c0 3.5-3 5.5-8 8.5z" fill="#ff8fa3" stroke="#4b3b2f" stroke-width="2"/>' :
-        mood === 'joy' ? '<path d="M98 18l2 5 5 2-5 2-2 5-2-5-5-2 5-2zM20 24l1.4 3.6 3.6 1.4-3.6 1.4L20 34l-1.4-3.6-3.6-1.4 3.6-1.4z" fill="#ffd34d" stroke="#4b3b2f" stroke-width="1.6" stroke-linejoin="round"/>' : '';
-      return `<svg viewBox="0 0 120 120" aria-hidden="true" focusable="false">
-        <ellipse cx="60" cy="112" rx="30" ry="5" fill="rgba(0,0,0,.08)"/>
-        <g stroke="#4b3b2f" stroke-width="2.6" stroke-linejoin="round">
-          <path d="M60 28q-6-15-21-15q8 12 21 15z" fill="#68b97f"/><path d="M60 28q7-17 24-14q-11 12-24 14z" fill="#8fd19e"/>
-          <ellipse cx="22" cy="78" rx="8" ry="7" fill="#ffc94d"/><ellipse cx="98" cy="78" rx="8" ry="7" fill="#ffc94d"/>
-          <circle cx="60" cy="67" r="40" fill="#ffd36b"/>
-        </g>
-        <path d="M30 52q6-16 22-20" stroke="#fff" stroke-width="5" fill="none" stroke-linecap="round" opacity=".6"/>
-        ${eyes}
-        <ellipse cx="38" cy="75" rx="7" ry="4.5" fill="#ffa69e" opacity=".8"/><ellipse cx="82" cy="75" rx="7" ry="4.5" fill="#ffa69e" opacity=".8"/>
-        ${mouth}${extra}
-      </svg>`;
-    }
-
     const UI = {
       speaker: '<path d="M4 9h4l5-4v14l-5-4H4z" fill="currentColor"/><path d="M16 9a4 4 0 0 1 0 6M18.5 6.5a8 8 0 0 1 0 11"/>',
       mute: '<path d="M4 9h4l5-4v14l-5-4H4z" fill="currentColor"/><path d="M16 9.5l5 5M21 9.5l-5 5"/>',
@@ -3309,6 +3921,99 @@
     const ic = (name, cls = 'ic') => `<svg class="${cls}" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><g stroke="${OL}" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">${ICONS[name] || ICONS.star}</g></svg>`;
     const ui = (name, cls = 'ui') => `<svg class="${cls}" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">${UI[name] || ''}</svg>`;
 
+    /* ---- 星ラボの イラスト ---- */
+    Object.assign(ICONS, {
+      kuku: `<rect x="6" y="8" width="52" height="48" rx="9" fill="#fff"/><path d="M6 17a9 9 0 0 1 9-9h34a9 9 0 0 1 9 9v5H6z" fill="#5aa9e6"/>
+        <g fill="#fff" font-size="9" ${TXT}><text x="32" y="19.5">くく</text></g>
+        <g fill="${OL}" font-size="17" ${TXT}><text x="32" y="43">2×3</text></g>
+        <path d="M18 49h28" fill="none" stroke="#ffb27a" stroke-width="3"/>
+        <circle cx="50" cy="48" r="8" fill="#ffd34d"/><g fill="${OL}" font-size="10" ${TXT}><text x="50" y="51.5">6</text></g>`,
+      telescope: `<path d="M21 58l10-18M43 58L33 40M32 40v18" fill="none" stroke-width="3.2"/>
+        <g transform="rotate(-28 32 30)"><rect x="9" y="23" width="40" height="14" rx="5" fill="#7c83e8"/><rect x="45" y="19.5" width="11" height="21" rx="3.5" fill="#5b61c9"/>
+        <rect x="4" y="25.5" width="7" height="9" rx="2" fill="#c9ccf5"/><path d="M22 23v14" fill="none" stroke="#fff" stroke-width="2.4"/></g>
+        <circle cx="32" cy="38" r="3.6" fill="#ffc93c"/><path d="M53 4l1.5 3.5L58 9l-3.5 1.5L53 14l-1.5-3.5L48 9l3.5-1.5z" fill="#ffd34d" stroke-width="1.6"/>`,
+      planet: `<g transform="rotate(-18 32 33)"><ellipse cx="32" cy="33" rx="29" ry="9" fill="none" stroke-width="7.5"/><ellipse cx="32" cy="33" rx="29" ry="9" fill="none" stroke="#ffd166" stroke-width="3"/></g>
+        <circle cx="32" cy="33" r="17" fill="#ff9f7a"/><path d="M17.5 28q14 4 29-2M17 38q15 4 30-2" fill="none" stroke="#ffc3a8" stroke-width="3.2"/>
+        <g transform="rotate(-18 32 33)"><path d="M3 33a29 9 0 0 0 58 0" fill="none" stroke-width="7.5"/><path d="M3 33a29 9 0 0 0 58 0" fill="none" stroke="#ffd166" stroke-width="3"/></g>`,
+      rocket: `<path d="M27 46q5 12 5 15 0-3 5-15z" fill="#ffc93c"/>
+        <path d="M20 31l-9 10 2 8 8-6zM44 31l9 10-2 8-8-6z" fill="#ff6b6b"/>
+        <path d="M32 4c10 8 14 20 12 34H20C18 24 22 12 32 4z" fill="#eef0ff"/><circle cx="32" cy="22" r="6" fill="#7cc4f0"/>
+        <path d="M23 38h18l-3 8H26z" fill="#9aa3c9"/>${shine('M27 14q2-4 5-6')}`,
+      flask: `<path d="M24 6h16M27 6v16L13 48a6 6 0 0 0 5.3 9h27.4a6 6 0 0 0 5.3-9L37 22V6" fill="#fff"/>
+        <path d="M19.5 36h25l6.5 12a6 6 0 0 1-5.3 9H18.3a6 6 0 0 1-5.3-9z" fill="#9b8cf5" stroke="none"/>
+        <path d="M24 6h16M27 6v16L13 48a6 6 0 0 0 5.3 9h27.4a6 6 0 0 0 5.3-9L37 22V6" fill="none"/>
+        <g fill="#fff" stroke="none"><circle cx="26" cy="46" r="2.6"/><circle cx="36" cy="50" r="1.8"/><circle cx="33" cy="41" r="1.4"/></g>
+        <path d="${STAR}" fill="#ffd34d" stroke-width="5" transform="translate(42 44) scale(.2) translate(-32 -32)"/>`,
+      ear: `<path d="M18 27a14 14 0 0 1 28 0c0 8-6 10-8 15s-2 13-9 13a8 8 0 0 1-8-8" fill="#ffd9b3"/>
+        <path d="M26 27a6 6 0 0 1 12 0c0 4-4 5-5 8" fill="none" stroke-width="2.4"/>
+        <path d="M51 21q4 6 0 12M56 16q7 11 0 22" fill="none" stroke="#7c83e8" stroke-width="2.8"/>`,
+      constellation: `<rect x="4" y="8" width="56" height="48" rx="11" fill="#2e3184"/>
+        <path d="M14 42L24 22l14 11 13-13" fill="none" stroke="#c9ccf5" stroke-width="2"/>
+        <g stroke-width="5"><path d="${STAR}" fill="#ffd34d" transform="translate(14 42) scale(.22) translate(-32 -32)"/><path d="${STAR}" fill="#ffd34d" transform="translate(24 22) scale(.22) translate(-32 -32)"/>
+        <path d="${STAR}" fill="#ffd34d" transform="translate(38 33) scale(.22) translate(-32 -32)"/><path d="${STAR}" fill="#ffd34d" transform="translate(51 20) scale(.22) translate(-32 -32)"/></g>
+        <g fill="#fff" stroke="none" opacity=".8"><circle cx="46" cy="46" r="1.2"/><circle cx="12" cy="18" r="1"/><circle cx="32" cy="50" r="1"/></g>`,
+      moon: `<path d="M40 7a25 25 0 1 0 17 40A21 21 0 0 1 40 7z" fill="#ffe27a"/><g fill="#f5cd4b" stroke="none"><circle cx="22" cy="40" r="3"/><circle cx="30" cy="50" r="2"/></g>`,
+      target: `<circle cx="29" cy="35" r="24" fill="#fff"/><circle cx="29" cy="35" r="17" fill="#ff8a8a"/><circle cx="29" cy="35" r="10" fill="#fff"/><circle cx="29" cy="35" r="4.2" fill="#ff5c5c"/>
+        <path d="M29 35L53 11" fill="none" stroke-width="3.2"/><path d="M47 9l7.5-1.5L53 15l6-1-4.5 5.5-6.5 1z" fill="#7c83e8" stroke-width="2"/>`,
+      observatory: `<path d="M38 18l15-11" fill="none" stroke-width="5"/><path d="M38 18l15-11" fill="none" stroke="#7c83e8" stroke-width="2"/>
+        <path d="M10 34a22 22 0 0 1 44 0z" fill="#e8e6ff"/><path d="M29 12.3h6V34h-6z" fill="#2e3184" stroke="none"/>
+        <rect x="9" y="34" width="46" height="22" rx="2" fill="#c9ccf5"/><rect x="27" y="42" width="10" height="14" rx="2" fill="#7c83e8"/>
+        <g fill="#ffd34d" stroke-width="1.8"><rect x="14" y="40" width="7" height="6" rx="1.5"/><rect x="43" y="40" width="7" height="6" rx="1.5"/></g>`,
+      sparkle: `<path d="M30 6l5 15 15 5-15 5-5 15-5-15-15-5 15-5z" fill="#ffd34d"/><path d="M50 40l2.4 6.6L59 49l-6.6 2.4L50 58l-2.4-6.6L41 49l6.6-2.4z" fill="#c4b5fd" stroke-width="2"/>`,
+    });
+
+    /* 星ラボの ロゴ（フラスコの中に 星） */
+    function logoSVG(cls = '') {
+      const id = 'lg' + Math.random().toString(36).slice(2, 7);
+      return `<svg class="${cls}" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+        <defs><linearGradient id="${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6266dc"/><stop offset="1" stop-color="#2c2f86"/></linearGradient></defs>
+        <rect x="3" y="3" width="58" height="58" rx="18" fill="url(#${id})" stroke="#26244a" stroke-width="2.6"/>
+        <g fill="#fff" opacity=".85"><circle cx="13" cy="44" r="1.3"/><circle cx="50" cy="40" r="1.1"/><circle cx="18" cy="12" r="1"/></g>
+        <g stroke="#26244a" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round">
+          <path d="M26 13h12M28.5 13v12L17 45.5a5 5 0 0 0 4.4 7.5h21.2a5 5 0 0 0 4.4-7.5L35.5 25V13" fill="#fff"/>
+          <path d="M21.6 38h20.8l4.6 7.5a5 5 0 0 1-4.4 7.5H21.4a5 5 0 0 1-4.4-7.5z" fill="#ffc93c" stroke="none"/>
+          <path d="M26 13h12M28.5 13v12L17 45.5a5 5 0 0 0 4.4 7.5h21.2a5 5 0 0 0 4.4-7.5L35.5 25V13" fill="none"/>
+          <path d="${STAR}" fill="#fff" stroke-width="7" transform="translate(32 45.5) scale(.2) translate(-32 -32)"/>
+        </g>
+        <path d="M48 9l1.6 4.4L54 15l-4.4 1.6L48 21l-1.6-4.4L42 15l4.4-1.6z" fill="#ffe27a"/>
+        <path d="M14 22l1 2.6 2.6 1-2.6 1-1 2.6-1-2.6-2.6-1 2.6-1z" fill="#ffe27a"/>
+      </svg>`;
+    }
+
+    /* キャラクター「キラボ」（星の形の ロボット。きもちで 画面の かおが かわります） */
+    function mascotSVG(mood = 'happy') {
+      const pts = [];
+      for (let k = 0; k < 10; k++) {
+        const a = (-90 + k * 36) * Math.PI / 180, r = k % 2 ? 23 : 45;
+        pts.push((60 + r * Math.cos(a)).toFixed(1) + ',' + (68 + r * Math.sin(a)).toFixed(1));
+      }
+      const star = pts.join(' ');
+      const C = '#8af3ff';
+      const face = {
+        happy: `<path d="M48 67q4-6 8 0M64 67q4-6 8 0" stroke="${C}" stroke-width="3.4" fill="none" stroke-linecap="round"/><path d="M55 72.5q5 3 10 0" stroke="${C}" stroke-width="2.8" fill="none" stroke-linecap="round"/>`,
+        calm: `<g fill="${C}"><circle cx="52" cy="64.5" r="3.4"/><circle cx="68" cy="64.5" r="3.4"/></g><path d="M56 72.5q4 2 8 0" stroke="${C}" stroke-width="2.8" fill="none" stroke-linecap="round"/>`,
+        care: `<path d="M48 64q4 4 8 0M64 64q4 4 8 0" stroke="${C}" stroke-width="3.2" fill="none" stroke-linecap="round"/><path d="M56 73q4-2 8 0" stroke="${C}" stroke-width="2.8" fill="none" stroke-linecap="round"/>`,
+        talk: `<g fill="${C}"><circle cx="52" cy="64" r="3.4"/><circle cx="68" cy="64" r="3.4"/><ellipse cx="60" cy="72.5" rx="4.4" ry="2.8"/></g>`,
+        joy: `<path d="M47 67q5-7 10 0M63 67q5-7 10 0" stroke="${C}" stroke-width="3.4" fill="none" stroke-linecap="round"/><path d="M54 71h12q-1 5.5-6 5.5t-6-5.5z" fill="${C}"/>`,
+      } [mood] || '';
+      const extra = mood === 'care' ? '<path d="M100 32c-5-3-8-5-8-8.5a3.6 3.6 0 0 1 8-1.2 3.6 3.6 0 0 1 8 1.2c0 3.5-3 5.5-8 8.5z" fill="#ff8fa3" stroke="#4b3b2f" stroke-width="2"/>' :
+        mood === 'joy' ? '<g fill="#ffe27a" stroke="#4b3b2f" stroke-width="1.6" stroke-linejoin="round"><path d="M101 20l2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/><path d="M19 30l1.4 3.6 3.6 1.4-3.6 1.4L19 40l-1.4-3.6-3.6-1.4 3.6-1.4z"/></g>' : '';
+      return `<svg viewBox="0 0 120 120" aria-hidden="true" focusable="false">
+        <circle cx="60" cy="66" r="54" fill="#ffe27a" opacity=".18"/>
+        <ellipse cx="60" cy="115" rx="28" ry="4.5" fill="rgba(0,0,0,.14)"/>
+        <path d="M60 25V13" stroke="#4b3b2f" stroke-width="3" stroke-linecap="round"/>
+        <path d="M60 2l2.6 5.4 5.9.9-4.3 4.1 1 5.9-5.2-2.8-5.2 2.8 1-5.9-4.3-4.1 5.9-.9z" fill="#ff9fb2" stroke="#4b3b2f" stroke-width="2" stroke-linejoin="round"/>
+        <polygon points="${star}" fill="#4b3b2f" stroke="#4b3b2f" stroke-width="15" stroke-linejoin="round"/>
+        <polygon points="${star}" fill="#ffd34d" stroke="#ffd34d" stroke-width="9.6" stroke-linejoin="round"/>
+        <path d="M37 52q5-12 16-16" stroke="#fff" stroke-width="4.4" fill="none" stroke-linecap="round" opacity=".7"/>
+        <rect x="40" y="52" width="40" height="27" rx="11" fill="#2b2f5c" stroke="#4b3b2f" stroke-width="2.6"/>
+        <path d="M45 56h8" stroke="#fff" stroke-width="2" stroke-linecap="round" opacity=".35"/>
+        ${face}
+        <g fill="#ffa0a0" opacity=".85"><ellipse cx="45" cy="85" rx="4.4" ry="3"/><ellipse cx="75" cy="85" rx="4.4" ry="3"/></g>
+        ${extra}
+      </svg>`;
+    }
+
 
     /* =========================================================
        ここから下は しくみ（ふだんは さわらなくて OK）
@@ -3318,7 +4023,7 @@
     const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
     const pick = a => a[Math.floor(Math.random() * a.length)];
     const box = (name, extra = '') => `<span class="icon-box" ${extra}>${ic(name)}</span>`;
-    const PREFIX = 'waku_';
+    const PREFIX = 'hoshi_';
     const store = {
       get(k, d) {
         try {
@@ -3349,21 +4054,18 @@
       });
     }
 
-    /* サイト名（かなは カラフルに、漢字には ふりがな） */
-    const KANA_COLORS = ['#ef8a3c', '#3fa7a0', '#e4708f', '#4f95d6'];
-
+    /* サイト名（漢字には ふりがな、カタカナは グラデーション） */
     function brandHTML(name) {
-      let k = 0;
       return name.split(/([一-龯々]+)/).map(part => {
         if (!part) return '';
         if (/^[一-龯々]+$/.test(part)) return SITE_RUBY[part] ? `<ruby>${esc(part)}<rt>${esc(SITE_RUBY[part])}</rt></ruby>` : esc(part);
-        return [...part].map(ch => ch.trim() ? `<span class="k" style="color:${KANA_COLORS[k++ % KANA_COLORS.length]}">${esc(ch)}</span>` : ch).join('');
+        return `<span class="k">${esc(part)}</span>`;
       }).join('');
     }
 
-    /* ---------- せってい ---------- */
+
     const DEFAULT_SETTINGS = {
-      fs: 1, theme: 'hidamari', speak: true, rate: 0.9, sfx: true,
+      fs: 1, theme: 'hoshizora', speak: true, rate: 0.9, sfx: true,
       quiet: !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches),
       ud: false
     };
@@ -3502,6 +4204,7 @@
     document.addEventListener('keydown', e => {
       if (e.key !== 'Escape') return;
       if (!$('#bigcard').hidden) return closeBigcard();
+      if (!$('#sched-full').hidden) return closeSchedFull();
       const open = ['m-icons', 'm-picker', 'm-teacher', 'm-settings'].map(id => $('#' + id)).find(m => !m.hidden);
       if (open) return closeModal(open);
       if ($('#tool-timer').classList.contains('vt-full')) toggleFull(false);
@@ -3539,7 +4242,7 @@
       $('#year').textContent = d.getFullYear();
     }
 
-    /* ---------- わくまる（キャラクター） ---------- */
+    /* ---------- キラボ（キャラクター） ---------- */
     let baseMood = 'happy', talkTimer = null;
 
     function setMascot(mood) {
@@ -3560,13 +4263,13 @@
       $('#greet-title').textContent = h >= 4 && h < 10 ? 'おはよう！' : h >= 4 && h < 17 ? 'こんにちは！' : 'こんばんは！';
     }
     const MASCOT_LINES = [
-      'きょうも じぶんの ペースで やってみよう。',
-      'まちがえても だいじょうぶ。もういちど やってみよう！',
+      'ようこそ 星ラボへ！ きょうも じぶんの ペースで いこう。',
+      'まちがえても だいじょうぶ。けんきゅうは ためして みる ことが だいじ！',
       'つかれたら、しんこきゅう してみてね。',
       'こまったら「つたえる カード」を つかってね。',
-      'がんばると シールが もらえるよ！',
+      'できた ことが ふえると、ほしが ひかるよ。',
       'ゆっくりで いいよ。ひとつずつ やろうね。',
-      'わくわく する こと、いっしょに さがそう！',
+      'きょうの めあて、いっしょに がんばろう！',
     ];
     $('#mascot').addEventListener('click', () => {
       const cur = $('#greet-text').textContent;
@@ -3590,7 +4293,7 @@
     }
 
     function showFeelMsg(f) {
-      // くわしい ことばは わくまるが はなすので、ここは「つぎに できること」だけ
+      // くわしい ことばは キラボが はなすので、ここは「つぎに できること」だけ
       const b = $('#feel-msg');
       b.hidden = !f.calm;
       b.innerHTML = f.calm ? `<p>こんな ことも できるよ</p><button class="btn btn-sm" data-go="breath">${box('breath')}しんこきゅう</button><button class="btn btn-sub btn-sm" data-go="tell">${box('hand')}つたえる</button>` : '';
@@ -3638,6 +4341,7 @@
       $('#sched-count').textContent = `${n} / ${list.length} できた`;
       $('#sched-progress').style.width = list.length ? (n / list.length * 100) + '%' : '0';
       $('#sched-all').hidden = !(list.length && n === list.length);
+      if (typeof renderSchedFull === 'function') renderSchedFull();
       const nowEl = $('#steps .step.now');
       if (nowEl) {
         const bx = $('#steps');
@@ -3945,7 +4649,9 @@
       $('#ft-then').classList.toggle('active', !!ft.done && !!ft.then);
       $('#ft-done').disabled = !ft.first || ft.done;
     }
+    let pickMode = 'ft';
     $$('.ft-slot').forEach(s => s.addEventListener('click', () => {
+      pickMode = 'ft';
       pickTarget = s.dataset.slot;
       $('#pick-h').textContent = pickTarget === 'first' ? '「まず」 やる ことを えらんでね' : '「つぎ」の たのしみを えらんでね';
       $('#picker').innerHTML = ACTS.map((a, i) => `<button data-i="${i}">${box(a.ic)}${esc(a.l)}</button>`).join('');
@@ -3955,6 +4661,7 @@
     $('#picker').addEventListener('click', e => {
       const b = e.target.closest('button');
       if (!b) return;
+      if (pickMode === 'goal') return chooseGoal(+b.dataset.i);
       ft[pickTarget] = ACTS[+b.dataset.i];
       if (pickTarget === 'first') ft.done = false;
       store.set('ft', ft);
@@ -4006,51 +4713,181 @@
     $('#bigcard-close').addEventListener('click', closeBigcard);
     $('#bigcard-say').addEventListener('click', () => say(bigText, true));
 
-    /* 5. シール */
+    /* 5. ほし と せいざ（ごほうび） */
     function getDay() {
-      let day = store.get('stk_day', { d: '', n: 0, keys: [], got: [] });
-      if (day.d !== todayKey()) day = { d: todayKey(), n: 0, keys: [], got: [] };
+      let day = store.get('star_day', { d: '', n: 0, keys: [] });
+      if (day.d !== todayKey()) day = { d: todayKey(), n: 0, keys: [] };
       return day;
+    }
+
+    // いままでの ほしの かずから、いまの せいざ と かんせいした せいざを けいさん
+    function starState(total = store.get('stars_total', 0)) {
+      let left = total, ci = 0;
+      const done = {};
+      while (left >= CONSTELLATIONS[ci].pts.length) {
+        left -= CONSTELLATIONS[ci].pts.length;
+        done[ci] = (done[ci] || 0) + 1;
+        ci = (ci + 1) % CONSTELLATIONS.length;
+      }
+      return { cur: CONSTELLATIONS[ci], lit: left, done, total };
     }
 
     function award(key, beforeLeave) {
       const day = getDay();
       if (day.n >= DAILY_CAP || day.keys.includes(key)) return null;
-      const name = pick(STICKERS);
-      const all = store.get('stickers', []);
-      all.push(name);
-      store.set('stickers', all);
+      const before = starState();
+      const total = before.total + 1;
+      store.set('stars_total', total);
       day.n++;
       day.keys.push(key);
-      day.got.push(name);
-      store.set('stk_day', day);
-      renderStickers();
-      const full = all.length % BOOK_SIZE === 0;
-      if (S.quiet) toast('シール ゲット！', name);
+      store.set('star_day', day);
+      const finished = before.lit + 1 >= before.cur.pts.length ? before.cur.name : null;
+      renderStars(true);
+      if (S.quiet) toast(finished ? `${finished}が かんせい！` : 'ほし ゲット！', 'star');
       else {
         const p = document.createElement('div');
         p.className = 'stk-pop';
-        p.innerHTML = `<div>${box(name)}シール ゲット！${full ? '<small>シールちょうが 1さつ かんせい！</small>' : ''}</div>`;
+        p.innerHTML = `<div>${box(finished ? 'constellation' : 'star')}${finished ? 'せいざ かんせい！' : 'ほし ゲット！'}<small>${finished ? esc(finished) + 'が できたよ' : esc(before.cur.name) + ' ' + (before.lit + 1) + ' / ' + before.cur.pts.length}</small></div>`;
         document.body.appendChild(p);
-        setTimeout(() => p.remove(), 1500);
+        setTimeout(() => p.remove(), 1600);
       }
-      chime([880, 1175], .1);
-      if (!beforeLeave) setTimeout(() => say(full ? 'シールちょうが 1さつ かんせい！ すごいね！' : 'シール ゲット！'), 700);
-      return name;
+      chime(finished ? [784, 988, 1175, 1568] : [880, 1175], .1);
+      if (!beforeLeave) setTimeout(() => say(finished ? finished + 'が かんせい！ すごいね！' : 'ほし ゲット！'), 700);
+      return 'star';
     }
 
-    function renderStickers() {
-      const all = store.get('stickers', []);
-      const books = Math.floor(all.length / BOOK_SIZE);
-      const cur = all.slice(books * BOOK_SIZE);
-      $('#stk-book').innerHTML = Array.from({ length: BOOK_SIZE }, (_, i) =>
-        cur[i] ? `<span class="stk on" style="transform:rotate(${(i * 47) % 17 - 8}deg)">${ic(cur[i])}</span>` : '<span class="stk" aria-hidden="true"></span>').join('');
-      $('#stk-info').textContent = `いままでの シール ${all.length}まい`;
-      $('#stk-books').innerHTML = books ? `かんせい：${Array.from({ length: Math.min(books, 8) }, () => box('stickerbook')).join('')}${books > 8 ? '×' + books : ''}` :
-        `あと ${BOOK_SIZE - cur.length}まいで 1さつ かんせい！`;
+    function skySVG(c, lit, small) {
+      const lines = c.lines.map(([a, b]) => {
+        const on = a < lit && b < lit;
+        return `<line x1="${c.pts[a][0]}" y1="${c.pts[a][1]}" x2="${c.pts[b][0]}" y2="${c.pts[b][1]}" class="${on ? 'on' : ''}"/>`;
+      }).join('');
+      const stars = c.pts.map(([x, y], i) => i < lit ?
+        `<g class="st on" style="--d:${i * 0.15}s"><circle cx="${x}" cy="${y}" r="${small ? 4 : 3.6}" class="glow"/><path d="${STAR}" transform="translate(${x} ${y}) scale(${small ? .13 : .1}) translate(-32 -32)"/></g>` :
+        `<circle cx="${x}" cy="${y}" r="${small ? 1.6 : 2}" class="st off"/>`).join('');
+      return `<g class="lines">${lines}</g>${stars}`;
+    }
+
+    function renderStars(pulse) {
+      const st = starState();
+      $('#sn-name').textContent = st.cur.name;
+      $('#sn-count').textContent = `${st.lit} / ${st.cur.pts.length}`;
+      $('#sn-sky').innerHTML = `<g class="bg-dots">${Array.from({ length: 26 }, (_, i) => `<circle cx="${(i * 37) % 100}" cy="${(i * 53) % 72}" r=".5"/>`).join('')}</g>` + skySVG(st.cur, st.lit);
+      const rest = st.cur.pts.length - st.lit;
+      $('#sn-msg').textContent = `あと ${rest}こ で かんせい！ いままでに あつめた ほし：${st.total}こ`;
+      const doneHTML = CONSTELLATIONS.map((c, i) => st.done[i] ?
+        `<div class="sn-chip"><svg viewBox="0 0 100 72" aria-hidden="true">${skySVG(c, c.pts.length, true)}</svg><span>${esc(c.name)}${st.done[i] > 1 ? ' ×' + st.done[i] : ''}</span></div>` : '').join('');
+      $('#sn-done').innerHTML = doneHTML ? `<p class="sn-done-h">かんせいした せいざ</p><div class="sn-chips">${doneHTML}</div>` : '';
       $('#stk-cap').textContent = DAILY_CAP;
       const day = getDay();
-      $('#today-stk').innerHTML = day.got.length ? day.got.map(n => `<span class="icon-box mini-stk">${ic(n)}</span>`).join('') : '<span class="none">まだ ないよ。がんばると もらえるよ！</span>';
+      $('#today-stk').innerHTML = day.n ? Array.from({ length: day.n }, (_, i) => `<span class="icon-box mini-stk ${pulse && i === day.n - 1 ? 'new' : ''}">${ic('star')}</span>`).join('') : '<span class="none">がんばると ほしが ふえるよ！</span>';
+    }
+
+    /* ---------- きょうの めあて ---------- */
+    const getGoals = () => store.get('goals', DEFAULT_GOALS);
+
+    function getGoalToday() {
+      const g = store.get('goal_today', null);
+      return g && g.d === todayKey() ? g : null;
+    }
+
+    function renderGoal() {
+      const g = getGoalToday(), goals = getGoals(), item = g && goals[g.i];
+      const el = $('#goal-card');
+      if (!item) {
+        el.className = 'goal-card';
+        el.innerHTML = `<span class="goal-label">${box('target')}きょうの めあて</span><button class="btn btn-sm" data-goal="pick">めあてを えらぶ</button>`;
+        return;
+      }
+      el.className = 'goal-card' + (g.done ? ' done' : '');
+      el.innerHTML = `<span class="goal-label">${box('target')}きょうの めあて</span>
+        <span class="goal-main">${box(item.ic)}<b>${esc(item.l)}</b></span>
+        ${g.done ? `<span class="goal-done">${box('check')}できたね！</span>` : `<button class="btn btn-good btn-sm" data-goal="done">${ui('check')}できた！</button>`}
+        <button class="goal-change" data-goal="pick">かえる</button>`;
+    }
+
+    function openGoalPicker() {
+      pickMode = 'goal';
+      $('#pick-h').textContent = 'きょうの めあてを えらんでね';
+      $('#picker').innerHTML = getGoals().map((a, i) => `<button data-i="${i}">${box(a.ic)}${esc(a.l)}</button>`).join('');
+      openModal('m-picker');
+      say('きょうの めあてを えらんでね');
+    }
+
+    function chooseGoal(i) {
+      const prev = getGoalToday();
+      store.set('goal_today', { d: todayKey(), i, done: !!(prev && prev.i === i && prev.done) });
+      closeModal($('#m-picker'));
+      renderGoal();
+      const item = getGoals()[i];
+      mascotSay('きょうの めあては「' + item.l + '」だね。いっしょに がんばろう！', 'joy');
+    }
+    $('#goal-card').addEventListener('click', e => {
+      const b = e.target.closest('[data-goal]');
+      if (!b) return;
+      if (b.dataset.goal === 'pick') return openGoalPicker();
+      const g = getGoalToday();
+      if (!g) return;
+      g.done = true;
+      store.set('goal_today', g);
+      renderGoal();
+      chime([523, 659, 784, 1047], .12);
+      award('goal');
+      mascotSay('めあて できたね！ すごい！', 'joy');
+    });
+
+    /* ---------- よてい（おおきく みる） ---------- */
+    function renderSchedFull() {
+      const box2 = $('#sched-full');
+      if (box2.hidden) return;
+      const list = getSched(), st = getDone();
+      const open = list.map((_, i) => i).filter(i => !st.done.includes(i));
+      const now = list[open[0]], next = list[open[1]];
+      const d = new Date();
+      $('#sf-title').textContent = `きょうの よてい　${d.getMonth() + 1}がつ ${d.getDate()}にち（${WD[d.getDay()]}）`;
+      $('#sf-main').innerHTML = now ? `
+        <div class="sf-now"><span class="sf-tag">いま</span>${box(now.ic || 'star')}<b>${esc(now.l)}</b><span class="sf-time">${esc(now.t || '')}</span>
+          <button class="btn btn-good" id="sf-done">${ui('check')}おわった！</button></div>
+        <div class="sf-arrow">${ui('arrow')}</div>
+        ${next ? `<div class="sf-next"><span class="sf-tag">つぎ</span>${box(next.ic || 'star')}<b>${esc(next.l)}</b><span class="sf-time">${esc(next.t || '')}</span></div>` : '<div class="sf-next sf-last"><span class="sf-tag">つぎ</span><b>おしまい</b></div>'}` :
+        `<div class="sf-all">${box('constellation')}<b>きょうの よていは ぜんぶ おわったよ！</b></div>`;
+      $('#sf-strip').innerHTML = list.map((s, i) => `<span class="sf-chip ${st.done.includes(i) ? 'done' : i === open[0] ? 'now' : ''}">${box(s.ic || 'star')}<small>${esc(s.l)}</small></span>`).join('');
+    }
+    $('#sched-big').addEventListener('click', () => {
+      focusStack.push(document.activeElement);
+      $('#sched-full').hidden = false;
+      renderSchedFull();
+      $('#sf-close').focus();
+      say('きょうの よてい');
+    });
+    $('#sf-close').addEventListener('click', closeSchedFull);
+
+    function closeSchedFull() {
+      $('#sched-full').hidden = true;
+      const f = focusStack.pop();
+      if (f && f.focus) f.focus();
+    }
+    $('#sf-main').addEventListener('click', e => {
+      if (!e.target.closest('#sf-done')) return;
+      const nowBtn = $('#steps .step.now');
+      if (nowBtn) nowBtn.click();
+    });
+
+    /* ---------- ヒーローの よぞら ---------- */
+    function buildScene() {
+      let seed = 7;
+      const rnd = () => (seed = (seed * 9301 + 49297) % 233280) / 233280;
+      let s = '';
+      for (let i = 0; i < 90; i++) {
+        const x = rnd() * 1200, y = rnd() * 230, r = .7 + rnd() * 1.9;
+        if (x > 1000 && y < 160) continue; // つきの まわりは あける
+        const tw = i % 4 === 0 ? ` class="tw" style="animation-delay:${(rnd() * 5).toFixed(2)}s"` : '';
+        s += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${r.toFixed(2)}" opacity="${(.45 + rnd() * .55).toFixed(2)}"${tw}/>`;
+      }
+      [[260, 60], [640, 40], [880, 110], [420, 150]].forEach(([x, y]) => {
+        s += `<path class="tw big" d="${STAR}" transform="translate(${x} ${y}) scale(.2) translate(-32 -32)"/>`;
+      });
+      $('#scene-stars').innerHTML = s;
+      // わくせいの イラストは ICONS.planet（いまは ヒーローでは つかっていません）
     }
 
     /* =========================================================
@@ -4102,11 +4939,12 @@
       const body = $('#t-body');
       if (name === 'sched') body.innerHTML = listEditorHTML('sched');
       if (name === 'tell') body.innerHTML = listEditorHTML('tell');
+      if (name === 'goal') body.innerHTML = listEditorHTML('goal');
       if (name === 'apps') body.innerHTML = appsEditorHTML();
       if (name === 'feel') body.innerHTML = feelLogHTML();
       if (name === 'data') body.innerHTML = dataHTML();
       hydrate(body);
-      if (name === 'sched' || name === 'tell') edRows();
+      if (name === 'sched' || name === 'tell' || name === 'goal') edRows();
     }
 
     /* イラスト選び */
@@ -4129,12 +4967,15 @@
 
     function listEditorHTML(kind) {
       const isSched = kind === 'sched';
-      ed = { kind, rows: JSON.parse(JSON.stringify(isSched ? getSched() : getTell())) };
-      const help = isSched ?
-        'きょうのよていを作ります。イラストを押して選び、時刻と名前を入れて「保存」を押してください。チェック（おわった印）は毎日自動でリセットされます。' :
-        '「つたえるカード」の内容を、子どもに合わせて変えられます。よく使う要求や気持ちを、短いひらがなの文にするのがおすすめです。';
+      const src = { sched: getSched, tell: getTell, goal: getGoals } [kind]();
+      ed = { kind, rows: JSON.parse(JSON.stringify(src)) };
+      const help = {
+        sched: 'きょうのよていを作ります。イラストを押して選び、時刻と名前を入れて「保存」を押してください。チェック（おわった印）は毎日自動でリセットされます。',
+        tell: '「つたえるカード」の内容を、子どもに合わせて変えられます。よく使う要求や気持ちを、短いひらがなの文にするのがおすすめです。',
+        goal: '子どもが選ぶ「きょうのめあて」の候補です。その子の目標に合わせて、短く具体的なひらがなの文にするのがおすすめです（例：「てを あげて はなす」）。',
+      } [kind];
       return `<div class="t-help">${help}</div>
-        <table class="t-table"><thead><tr>${isSched ? '<th>時刻</th>' : ''}<th>イラスト</th><th>${isSched ? 'なまえ（ひらがな推奨）' : 'つたえる ことば'}</th><th>ならびかえ・削除</th></tr></thead><tbody id="ed-rows"></tbody></table>
+        <table class="t-table"><thead><tr>${isSched ? '<th>時刻</th>' : ''}<th>イラスト</th><th>${isSched ? 'なまえ（ひらがな推奨）' : kind === 'goal' ? 'めあての ことば' : 'つたえる ことば'}</th><th>ならびかえ・削除</th></tr></thead><tbody id="ed-rows"></tbody></table>
         <div class="t-actions">
           <button class="btn btn-sub btn-sm" data-ed="add"><span data-ui="plus"></span>行を追加</button>
           <button class="btn btn-sub btn-sm" data-ed="default"><span data-ui="reset"></span>はじめの形にもどす</button>
@@ -4185,7 +5026,7 @@
         if (last) last.focus();
       }
       if (a === 'default') {
-        ed.rows = JSON.parse(JSON.stringify(isSched ? DEFAULT_SCHED : DEFAULT_TELL));
+        ed.rows = JSON.parse(JSON.stringify({ sched: DEFAULT_SCHED, tell: DEFAULT_TELL, goal: DEFAULT_GOALS } [ed.kind]));
         edRows();
       }
       if (a === 'save' || a === 'print') {
@@ -4194,6 +5035,10 @@
           store.set('sched', rows);
           store.set('sched_done', { d: todayKey(), done: [] });
           renderSched();
+        } else if (ed.kind === 'goal') {
+          store.set('goals', rows);
+          store.set('goal_today', null);
+          renderGoal();
         } else {
           store.set('tell', rows);
           renderTell();
@@ -4265,7 +5110,7 @@
 
     /* データ */
     function dataHTML() {
-      return `<div class="t-help">記録（よてい・つたえるカード・シール・すき・設定・きもちの記録など）は、この端末のブラウザだけに保存されています。端末を変えるときは「書き出し」→ 新しい端末で「読み込み」をしてください。</div>
+      return `<div class="t-help">記録（よてい・めあて・つたえるカード・ほし・すき・設定・きもちの記録など）は、この端末のブラウザだけに保存されています。端末を変えるときは「書き出し」→ 新しい端末で「読み込み」をしてください。</div>
         <div class="t-actions">
           <button class="btn btn-sm" onclick="exportData()"><span data-ui="download"></span>書き出し</button>
           <label class="btn btn-sub btn-sm" style="cursor:pointer;"><span data-ui="upload"></span>読み込み<input type="file" accept=".json,application/json" onchange="importData(event)" hidden></label>
@@ -4282,7 +5127,7 @@
       const blob = new Blob([JSON.stringify(out, null, 1)], { type: 'application/json' });
       const a = document.createElement('a');
       a.href = URL.createObjectURL(blob);
-      a.download = `wakuwaku-data-${todayKey()}.json`;
+      a.download = `hoshilab-data-${todayKey()}.json`;
       a.click();
       setTimeout(() => URL.revokeObjectURL(a.href), 1000);
     }
@@ -4307,7 +5152,7 @@
     }
 
     function resetAll() {
-      if (!confirm('この端末の記録（よてい・カード・シール・すき・設定・きもちの記録）をすべて消します。元にはもどせません。よろしいですか？')) return;
+      if (!confirm('この端末の記録（よてい・めあて・カード・ほし・すき・設定・きもちの記録）をすべて消します。元にはもどせません。よろしいですか？')) return;
       Object.keys(localStorage).filter(k => k.startsWith(PREFIX)).forEach(k => localStorage.removeItem(k));
       location.reload();
     }
@@ -4317,6 +5162,8 @@
     ========================================================= */
     function boot() {
       $('#site-name').innerHTML = brandHTML(SITE_NAME);
+      $('#brand-mark').innerHTML = logoSVG();
+      buildScene();
       $('#site-sub').textContent = SITE_SUB;
       $('#footer-name').textContent = SITE_NAME;
       $('#mascot-name').textContent = MASCOT_NAME;
@@ -4329,11 +5176,13 @@
       renderFeels();
       setMascot(baseMood);
       $('#footer-mascot').innerHTML = mascotSVG('happy');
+      if (!['timer', 'breath', 'firstthen', 'tell', 'stars'].includes(store.get('tool', 'timer'))) store.set('tool', 'timer');
       renderTeacherArea();
       renderSched();
       renderApps();
       renderTell();
-      renderStickers();
+      renderStars();
+      renderGoal();
       renderFT();
       vtSet(store.get('vt_min', 5));
       const col = store.get('vt_color', null);
@@ -4350,7 +5199,8 @@
           lastDay = todayKey();
           renderGreeting();
           renderSched();
-          renderStickers();
+          renderStars();
+          renderGoal();
           renderFeels();
         }
       }, 15000);

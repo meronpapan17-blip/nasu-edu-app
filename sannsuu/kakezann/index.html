@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>かけざん アプリ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:light dark;--bg:light-dark(#fbfaf6,#16201f);--ink:light-dark(#22302f,#eef3f1);--sub:light-dark(#5d6b69,#a9b8b5);--head:light-dark(#1f6f6a,#123f3c);--card:light-dark(#fff,#1f2c2b);--line:light-dark(#e3e0d6,#33423f)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 "Zen Maru Gothic","Hiragino Maru Gothic ProN","Yu Gothic",sans-serif}
+header{background:var(--head);color:#fff;padding:24px max(4vw,16px)}
+h1{margin:0 auto;max-width:900px;font-size:clamp(30px,6vw,44px);font-weight:900;line-height:1.1}
+header p{max-width:900px;margin:6px auto 0;opacity:.85}
+main{max-width:900px;margin:auto;padding:24px max(4vw,16px) 40px;display:grid;gap:16px}
+a.app{display:flex;align-items:center;gap:18px;text-decoration:none;color:inherit;background:var(--card);border:3px solid var(--line);border-radius:26px;padding:18px 22px;box-shadow:0 6px 0 var(--line)}
+a.app:hover,a.app:focus-visible{border-color:var(--c);outline:none}
+a.app:active{transform:translateY(3px);box-shadow:0 3px 0 var(--line)}
+.num{flex:none;width:64px;height:64px;border-radius:20px;background:var(--c);color:#fff;font-size:32px;font-weight:900;display:grid;place-items:center}
+.app b{font-size:clamp(22px,4.5vw,28px);display:block;line-height:1.2}
+.app span{color:var(--sub);font-size:16px}
+</style>
+</head>
+<body>
+<header><h1>かけざん アプリ</h1><p>やりたい ものを えらんでね</p></header>
+<main>
+  <a class="app" href="kakezan.html" style="--c:#ef8a1f"><span class="num">1</span><div><b>かけざん の へや</b><span>えを うごかして「なにが いくつぶん」を まなぶ</span></div></a>
+  <a class="app" href="irekae.html" style="--c:#2f7fd8"><span class="num">2</span><div><b>いれかえて くらべよう</b><span>3×4 と 4×3 を ならべて くらべる</span></div></a>
+  <a class="app" href="flash.html" style="--c:#2e9d5b"><span class="num">3</span><div><b>くく フラッシュカード</b><span>カードで ふくしゅう する</span></div></a>
+</main>
+</body>
+</html>
