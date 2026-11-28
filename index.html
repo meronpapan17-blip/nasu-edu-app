@@ -3537,7 +3537,7 @@
          },
 
        ・特別支援のアプリは「tokubetusienn」、自習用は「zisyuuyou」、
-         算数は「sannsuu」フォルダの中に作る想定です
+         算数は「sannsuu」、国語は「kokugo」フォルダの中に作る想定です
        ・自習用は cat: 'jisyu' にすると「じしゅう コーナー」にも並びます
        ・つかえるイラストの名前（一部）：
          pencil coin kazu kotoba clock house talk dice popcorn calendar keyboard
@@ -3572,6 +3572,15 @@
         desc: 'かけざん（くく）の れんしゅうを しよう！',
         yomi: 'かけざん。くくの れんしゅうを しよう！',
         href: './sannsuu/kakezann/index.html',
+        badge: 'new',
+      },
+      {
+        id: 'hiragana',
+        cat: 'kotoba',
+        icon: 'hiragana',
+        title: 'ひらがな',
+        desc: 'ひらがなの れんしゅうを しよう！',
+        href: './kokugo/hiragana/index.html',
         badge: 'new',
       },
       {
@@ -3652,7 +3661,7 @@
       ['bus', 'バス'], ['clock', 'とけい'], ['calendar', 'カレンダー'], ['house', 'いえ'], ['blocks', 'ブロック'], ['puzzle', 'パズル'],
       ['dice', 'ゲーム'], ['coin', 'おかね'], ['sofa', 'やすむ'], ['toilet', 'トイレ'], ['soap', 'てあらい'], ['cup', 'みず'],
       ['hand', 'てつだって'], ['question', 'わからない'], ['earmuff', 'うるさい'], ['thermo', 'ぐあい'], ['talk', 'はなす'], ['heart', 'すき'],
-      ['star', 'ほし'], ['check', 'できた'], ['popcorn', 'おやつ'], ['kuku', 'かけざん'], ['toolbox', 'どうぐ'], ['apple', 'くだもの'], ['car', 'くるま'],
+      ['star', 'ほし'], ['check', 'できた'], ['popcorn', 'おやつ'], ['kuku', 'かけざん'], ['hiragana', 'ひらがな'], ['toolbox', 'どうぐ'], ['apple', 'くだもの'], ['car', 'くるま'],
       ['ear', 'きく'], ['target', 'めあて'], ['telescope', 'かんさつ'], ['flask', 'じっけん'], ['rocket', 'ロケット'], ['planet', 'うちゅう'],
       ['moon', 'つき'], ['sparkle', 'きらきら'], ['observatory', 'ラボ'], ['month', 'よていひょう'],
     ];
@@ -3928,6 +3937,10 @@
         <g fill="${OL}" font-size="17" ${TXT}><text x="32" y="43">2×3</text></g>
         <path d="M18 49h28" fill="none" stroke="#ffb27a" stroke-width="3"/>
         <circle cx="50" cy="48" r="8" fill="#ffd34d"/><g fill="${OL}" font-size="10" ${TXT}><text x="50" y="51.5">6</text></g>`,
+      hiragana: `<rect x="4" y="24" width="20" height="22" rx="5" fill="#ffd9e3" transform="rotate(-8 14 35)"/>
+        <rect x="22" y="14" width="20" height="22" rx="5" fill="#fff3c4"/><rect x="40" y="24" width="20" height="22" rx="5" fill="#d8ecff" transform="rotate(8 50 35)"/>
+        <g font-size="15" ${TXT}><text x="14" y="41" fill="#d9577f" transform="rotate(-8 14 35)">あ</text><text x="32" y="31" fill="#c9861a">い</text><text x="50" y="41" fill="#3f86c9" transform="rotate(8 50 35)">う</text></g>
+        <path d="M14 54h36" fill="none" stroke="#c4b5fd" stroke-width="3"/>`,
       telescope: `<path d="M21 58l10-18M43 58L33 40M32 40v18" fill="none" stroke-width="3.2"/>
         <g transform="rotate(-28 32 30)"><rect x="9" y="23" width="40" height="14" rx="5" fill="#7c83e8"/><rect x="45" y="19.5" width="11" height="21" rx="3.5" fill="#5b61c9"/>
         <rect x="4" y="25.5" width="7" height="9" rx="2" fill="#c9ccf5"/><path d="M22 23v14" fill="none" stroke="#fff" stroke-width="2.4"/></g>
